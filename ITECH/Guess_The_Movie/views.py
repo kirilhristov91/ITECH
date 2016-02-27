@@ -2,7 +2,8 @@ from django.shortcuts import render
 from Guess_The_Movie.models import User
 from Guess_The_Movie.models import UserProfile
 from Guess_The_Movie.models import GameSession
-from Guess_The_Movie.models import Guestion
+from Guess_The_Movie.models import Question
+from Guess_The_Movie.forms import UserForm, UserProfileForm
 
 # Create your views here.
 
@@ -25,6 +26,7 @@ def userView(request, user_name):
 
 def index(request):
     # Go render the response and return it to the client.
+    context_dict = {}
     return render(request, "Guess_The_Movie/index.html", context_dict)
 
 
@@ -33,15 +35,60 @@ def guestionView(request, questionID):
      # Create a context dictionary which we can pass to the template rendering engine.
     context_dict = {}
     try:
-        userObject = Guestion.objects.get(game_session_id=questionID)
+        userObject = Question.objects.get(game_session_id=questionID)
         context_dict['question'] = userObject
 
-    except Guestion.UserDoesNotExist:
+    except Question.UserDoesNotExist:
         #User does not exist
         pass
     # Go render the response and return it to the client.
     return render(request, "Guess_The_Movie/question.html", context_dict)
 
 
+def register(request):
 
+    registered = False
+
+
+    if request.method == 'POST':
+
+        user_form = UserForm(data=request.POST)
+        profile_form = UserProfileForm(data=request.POST)
+
+
+        if user_form.is_valid() and profile_form.is_valid():
+
+            user = user_form.save()
+
+
+            user.set_password(user.password)
+            user.save()
+
+
+            profile = profile_form.save(commit=False)
+            profile.user = user
+
+
+            if 'picture' in request.FILES:
+                profile.picture = request.FILES['picture']
+
+
+            profile.save()
+
+
+            registered = True
+
+
+        else:
+            print user_form.errors, profile_form.errors
+
+
+    else:
+        user_form = UserForm()
+        profile_form = UserProfileForm()
+
+
+    return render(request,
+            'Guess_The_Movie/register.html',
+            {'user_form': user_form, 'profile_form': profile_form, 'registered': registered} )
 
