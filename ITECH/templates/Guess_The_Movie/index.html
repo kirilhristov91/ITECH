@@ -1,25 +1,19 @@
-<!DOCTYPE html>
-<html>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC"-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtmll/DTD/xhtmll-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
     <head>
-        <title>Rango</title>
+        <title>Guess The Movie</title>
+        <link rel="stylesheet" href="guessthemovie.css"/>
     </head>
 
     <body>
-        <h1>Rango says..hello world!</h1>
-
-
-        {% if categories %}
-            <ul>
-                {% for category in categories %}
-                <!-- Following line changed to add an HTML hyperlink -->
-                <li><a href="/rango/category/{{ category.slug }}">{{ category.name }}</a></li>
-                {% endfor %}
-            </ul>
-       {% else %}
-            <strong>There are no categories present.</strong>
-       {% endif %}
-
-        <a href="/rango/add_category/">Add a New Category</a><br />
+        <h1>Guess The Movie</h1>
+        <a href="/Guess_The_Movie/">Play</a>
+        <a href="/Guess_The_Movie/">Leaderboards</a>
+        <a href="/Guess_The_Movie/">About</a>
+        <a href="/Guess_The_Movie/login.html">Sign In</a>
+        <a href="/Guess_The_Movie/register.html">Register</a>
 
     </body>
 </html>
