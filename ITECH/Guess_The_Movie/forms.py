@@ -6,11 +6,11 @@ class UserForm(forms.ModelForm):
 
 
     class Meta:
-        model = User
+        model = UserProfile
         fileds = ('username', 'email', 'password')
 
 
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fileds = ('avatar')
+        fileds = ('picture')
