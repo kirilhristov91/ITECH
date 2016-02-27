@@ -1,4 +1,8 @@
 from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth import authenticate, login
+
+
 from Guess_The_Movie.models import User
 from Guess_The_Movie.models import UserProfile
 from Guess_The_Movie.models import GameSession
@@ -92,3 +96,24 @@ def register(request):
             'Guess_The_Movie/register.html',
             {'user_form': user_form, 'profile_form': profile_form, 'registered': registered} )
 
+
+def user_login(request):
+    #If it is POST request, get the information out of it
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(username=username,password=password)
+
+        if user:
+            login(request,user)
+            return HttpResponseRedirect('/guess_the_movie/')
+
+
+        else:
+            print "Invalid login details"
+            return HttpResponse("Invalid login ")
+
+
+    else:
+         return render(request, 'guess_the_movie/login.html', {})

@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Rango</title>
+    <link rel="icon" href="http://getbootstrap.com/favicon.ico">
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+        <title>Guess The Movie - Register </title>
     </head>
 
     <body>
-        <h1>Register with Rango</h1>
+
+        <h1>Register with Guess The Movie</h1>
 
         {% if registered %}
         Rango says: <strong>thank you for registering!</strong>
-        <a href="/rango/">Return to the homepage.</a><br />
+        <a href="/guess_the_movie/">Return to the homepage.</a><br />
         {% else %}
         Rango says: <strong>register here!</strong><br />
 
-        <form id="user_form" method="post" action="/rango/register/"
+        <form id="user_form" method="post" action="/guess_the_movie/register/"
                 enctype="multipart/form-data">
 
             {% csrf_token %}
