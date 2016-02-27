@@ -24,7 +24,7 @@ class Question (models.Model):
     option_b = models.CharField(max_length=256)
     option_c = models.CharField(max_length=256)
     option_d = models.CharField(max_length=256)
-    image = models.URLField()
+    image = models.ImageField(upload_to='question_images', blank=True)
     correct_answer = models.IntegerField(default=0)
     selected = models.IntegerField(default=0)
 
