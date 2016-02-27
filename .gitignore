@@ -264,3 +264,4 @@ sample/build/outputs/apk/sample-debug.apk
 . i d e a  
  
 ITECH/.idea/
+*.pyc
