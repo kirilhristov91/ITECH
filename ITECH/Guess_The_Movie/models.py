@@ -20,10 +20,10 @@ class GameSession (models.Model):
 
 class Question (models.Model):
     game_session_id = models.ForeignKey(GameSession)
-    option_a = models.CharField(max_lenght=256)
-    option_b = models.CharField(max_lenght=256)
-    option_c = models.CharField(max_lenght=256)
-    option_d = models.CharField(max_lenght=256)
+    option_a = models.CharField(max_length=256)
+    option_b = models.CharField(max_length=256)
+    option_c = models.CharField(max_length=256)
+    option_d = models.CharField(max_length=256)
     image = models.URLField()
     correct_answer = models.IntegerField(default=0)
     selected = models.IntegerField(default=0)
