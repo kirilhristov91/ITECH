@@ -105,6 +105,7 @@ def user_login(request):
 
         user = authenticate(username=username,password=password)
 
+        # If it is a registered user, login
         if user:
             login(request,user)
             return HttpResponseRedirect('/guess_the_movie/')
