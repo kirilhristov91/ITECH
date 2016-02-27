@@ -15,7 +15,7 @@ class UserProfile (models.Model):
 class GameSession (models.Model):
     user_id = models.ForeignKey(UserProfile)
     timestamp = models.DateTimeField(auto_now_add=True)
-    points = models.IntegerField(defaul=0)
+    points = models.IntegerField(default=0)
 
 
 class Question (models.Model):
@@ -25,8 +25,8 @@ class Question (models.Model):
     option_c = models.CharField(max_lenght=256)
     option_d = models.CharField(max_lenght=256)
     image = models.URLField()
-    correct_answer = models.IntegerField(defaul=0)
-    selected = models.IntegerField(defaul=0)
+    correct_answer = models.IntegerField(default=0)
+    selected = models.IntegerField(default=0)
 
 
 
