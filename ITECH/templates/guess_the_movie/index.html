@@ -77,16 +77,50 @@
         <!-- /.container-fluid -->
     </nav>
 
+
+
     <header>
-        <div class="header-content">
-            <div class="header-content-inner">
-                <h1>Can You Guess The Movie By Only One Screenshot ?</h1>
-                <hr>
-                <p>Try to answer 10 multiple choice questions related to movies and go up in the leaderboards</p>
-                <a href="/quess_the_movie/question" class="btn btn-primary btn-xl page-scroll">Play</a>
-            </div>
-        </div>
+
+                <div class=" text-center">
+                    <div id="carousel-example-generic" class="carousel slide">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators hidden-xs">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                        </ol>
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img class="img-responsive img-full" src="/static/img/header.jpg" alt="">
+                                   <div class="carousel-caption">
+                                    <h1>Can You Guess The Movie By Only One Screenshot</h1>
+                                    <p>Try to answer 10 multiple choice questions related to movies</p>
+                                       <p><a class="btn btn-primary btn-xl page-scroll" href="#">Play</a></p>
+                             </div>
+                            </div>
+                            <div class="item">
+                                <img class="img-responsive img-full" src="/static/img/antman.jpg" alt="">
+                            </div>
+                            <div class="item">
+                                <img class="img-responsive img-full" src="/static/img/header.jpg" alt="">
+                            </div>
+                        </div>
+
+                        <!-- Controls -->
+                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <span class="icon-prev"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <span class="icon-next"></span>
+                        </a>
+                    </div>
+                </div>
+
     </header>
+
+
 
     <section class="bg-primary" id="about">
         <div class="container">
@@ -115,6 +149,13 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="/static/js/creative.js"></script>
+
+  <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+    </script>
 
 </body>
 
