@@ -41,7 +41,6 @@ ITECH/idle/
 *.swp
 *.class
 
-*.png
 *~.nib
 local.properties
 .classpath
