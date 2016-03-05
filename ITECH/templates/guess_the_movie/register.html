@@ -1,47 +1,164 @@
-<!DOCTYPE html>
-<html>
-    <head>
-    <link rel="icon" href="http://getbootstrap.com/favicon.ico">
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
-        <title>Guess The Movie - Register </title>
+    <!DOCTYPE html>
+    <html>
+        <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Guess the Movie</title>
+
+        <!-- Bootstrap Core CSS -->
+        <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css">
+
+        <!-- Custom Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="static/font-awesome/css/font-awesome.min.css" type="text/css">
+
+        <!-- Plugin CSS -->
+        <link rel="stylesheet" href="/static/css/animate.min.css" type="text/css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/static/css/creative.css" type="text/css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
     </head>
 
-    <body>
+        <body id="page-top">
+        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand page-scroll" href="#page-top">Guess The Movie</a>
+                </div>
 
-        <h1>Register with Guess The Movie</h1>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a class="page-scroll" href="#">Home</a>
+                        </li>
+                          <li>
+                            <a class="page-scroll" href="/guess_the_movie/question">Play</a>
+                        </li>
+                          <li>
+                            <a class="page-scroll" href="#sevices">Leaderboards</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#services">About</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="/guess_the_movie/login">Login</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="/guess_the_movie/register">Sign UP FREE</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
 
-        {% if registered %}
-        Rango says: <strong>thank you for registering!</strong>
-        <a href="/guess_the_movie/">Return to the homepage.</a><br />
-        {% else %}
-        Rango says: <strong>register here!</strong><br />
+        <header>
+        <div class=" text-center">
+            <div id="carousel-example-generic" class="carousel slide">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators hidden-xs">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            </ol>
 
-     <form role="form"  method="post" action="../">
-                {% csrf_token %}
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img class="img-responsive img-full" src="/static/img/header.jpg" alt="">
+                                    <div class="carousel-caption">
+                                    {% if registered %}
+            Rango says: <strong>thank you for registering!</strong>
+            <a href="/guess_the_movie/">Return to the homepage.</a><br />
+            {% else %}
 
-<h2 class="form-signin-heading">Sign Up Here</h2>
 
-<div class="form-group" style="width:200px;margin: 0 auto" >
- <p class="required"> <label for="id_username">Username:</label>
-     <input class="form-control"  id="id_username" maxlength="30" name="username" type="text"  placeholder="Enter username"/></p>
-</div>
- <div class="form-group"  style="width:200px;margin: 0 auto">
-    <p class="required"><label for="id_email">E-mail:</label>
-        <input class="form-control" id="id_email" name="email" type="email" placeholder="Enter email" /></p>
- </div>
-<div class="form-group"  style="width:200px;margin: 0 auto">
-    <p class="required"><label for="id_password1">Password:</label>
-        <input class="form-control" id="id_password1" name="password1" type="password" placeholder="Enter password" /></p>
-</div>
-<div class="form-group"  style="width:200px;margin: 0 auto">
-    <p class="required"><label for="id_password2">Password (again):</label>
- <input class="form-control" id="id_password2" name="password2" type="password" placeholder="Enter password again" /></p>
-</div>
+         <form role="form"  method="post" action="../">
+                    {% csrf_token %}
 
-<button type="submit" class="btn btn-default" >Submit</button>
+    <h2 class="form-signin-heading">Sign Up Here</h2>
 
-        </form>
-        {% endif %}
-    </body>
-</html>
+    <div class="form-group" style="width:200px;margin: 0 auto" >
+     <p class="required"> <label for="id_username">Username:</label>
+         <input class="form-control"  id="id_username" maxlength="30" name="username" type="text"  placeholder="Enter username"/></p>
+    </div>
+     <div class="form-group"  style="width:200px;margin: 0 auto">
+        <p class="required"><label for="id_email">E-mail:</label>
+            <input class="form-control" id="id_email" name="email" type="email" placeholder="Enter email" /></p>
+     </div>
+    <div class="form-group"  style="width:200px;margin: 0 auto">
+        <p class="required"><label for="id_password1">Password:</label>
+            <input class="form-control" id="id_password1" name="password1" type="password" placeholder="Enter password" /></p>
+    </div>
+    <div class="form-group"  style="width:200px;margin: 0 auto">
+        <p class="required"><label for="id_password2">Password (again):</label>
+     <input class="form-control" id="id_password2" name="password2" type="password" placeholder="Enter password again" /></p>
+    </div>
+
+    <button type="submit" class="btn btn-default" >Submit</button>
+
+            </form>
+            {% endif %}
+                                        </div>
+                                </div>
+                                <div class="item">
+                                    <img class="img-responsive img-full" src="/static/img/antman.jpg" alt="">
+                                </div>
+                                <div class="item">
+                                    <img class="img-responsive img-full" src="/static/img/header.jpg" alt="">
+                                </div>
+                            </div>
+
+                            <!-- Controls -->
+                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                                <span class="icon-prev"></span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                                <span class="icon-next"></span>
+                            </a>
+
+
+            </div>
+            </div>
+            </header>
+
+
+
+        <script src="/static/js/jquery.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="/static/js/bootstrap.min.js"></script>
+
+        <!-- Plugin JavaScript -->
+        <script src="/static/js/jquery.easing.min.js"></script>
+        <script src="/static/js/jquery.fittext.js"></script>
+        <script src="/static/js/wow.min.js"></script>
+         <script src="/static/js/creative.js"></script>
+        </script>
+
+
+        </body>
+    </html>
