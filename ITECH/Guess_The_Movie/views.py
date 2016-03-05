@@ -24,14 +24,14 @@ def userView(request, user_name):
         pass
 
     # Go render the response and return it to the client.
-    return render(request, "Guess_The_Movie/user.html", context_dict)
+    return render(request, "guess_the_movie/user.html", context_dict)
 
 
 
 def index(request):
     # Go render the response and return it to the client.
     context_dict = {}
-    return render(request, "Guess_The_Movie/index.html", context_dict)
+    return render(request, "guess_the_movie/index.html", context_dict)
 
 
  # A function to get an existing question
@@ -46,7 +46,7 @@ def guestionView(request, questionID):
         #User does not exist
         pass
     # Go render the response and return it to the client.
-    return render(request, "Guess_The_Movie/question.html", context_dict)
+    return render(request, "guess_the_movie/question.html", context_dict)
 
 
 def register(request):
@@ -93,7 +93,7 @@ def register(request):
 
 
     return render(request,
-            'Guess_The_Movie/register.html',
+            'guess_the_movie/register.html',
             {'user_form': user_form, 'profile_form': profile_form, 'registered': registered} )
 
 
