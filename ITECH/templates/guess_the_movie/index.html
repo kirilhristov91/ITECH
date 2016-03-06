@@ -64,12 +64,22 @@
                     <li>
                         <a class="page-scroll" href="#services">About</a>
                     </li>
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a class="page-scroll" href="">Welcome {{user.username}}</a>
+                    </li>
+                    <li>
+                    <a class="page-scroll" href="/guess_the_movie/logout/">Logout</a>
+                        </li>
+
+                    {% else %}
                     <li>
                         <a class="page-scroll" href="/guess_the_movie/login">Login</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="/guess_the_movie/register">Sign UP FREE</a>
                     </li>
+                    {% endif %}
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
