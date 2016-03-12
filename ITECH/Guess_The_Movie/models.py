@@ -15,8 +15,11 @@ class Movie (models.Model):
     imdb_id = models.CharField(max_length=9)
     title = models.CharField(max_length=256)
     image_url = models.URLField()
-    poster_ulr = models.URLField()
+    poster_url = models.URLField()
     other_options = models.CharField(max_length=1024)
+
+    def __unicode__(self):
+        return self.title
 
 
 class GameSession (models.Model):
