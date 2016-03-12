@@ -34,6 +34,11 @@ def index(request):
     context_dict = {}
     return render(request, "guess_the_movie/index.html", context_dict)
 
+def game_session(request):
+    context_dict = {}
+    return render(request, "guess_the_movie/game.html", context_dict)
+
+
 
  # A function to get an existing question
 def guestionView(request, questionID):
