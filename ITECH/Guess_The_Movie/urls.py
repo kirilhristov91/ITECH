@@ -11,5 +11,7 @@ urlpatterns = patterns('',
          url(r'^game/$', views.game_session, name='login'),
         url(r'^leaderboard/$', views.leaderboard, name='leaderboard'),
         url(r'^about/$', views.about, name='about'),
+        url(r'^question/$', views.question, name='like_category'),
+        #url(r'^question/(?P<questionID>[\w\-]+)/$', views.guestionView, name='guestionview'),
     )
 
