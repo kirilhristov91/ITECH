@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class UserProfile (models.Model):
-
     user = models.OneToOneField(User)
     picture = models.ImageField(upload_to='profile_images', blank=True)
     game_session_counter = models.IntegerField(default=0)
@@ -12,21 +11,30 @@ class UserProfile (models.Model):
         return self.user.username
 
 
+class Movie (models.Model):
+    imdb_id = models.CharField(max_length=9)
+    title = models.CharField(max_length=256)
+    image_url = models.URLField()
+    poster_ulr = models.URLField()
+    other_options = models.CharField(max_length=1024)
+
+
 class GameSession (models.Model):
-    user_id = models.ForeignKey(UserProfile)
+    user = models.ForeignKey(UserProfile)
     timestamp = models.DateTimeField(auto_now_add=True)
     points = models.IntegerField(default=0)
 
 
 class Question (models.Model):
-    game_session_id = models.ForeignKey(GameSession)
-    option_a = models.CharField(max_length=256)
-    option_b = models.CharField(max_length=256)
-    option_c = models.CharField(max_length=256)
-    option_d = models.CharField(max_length=256)
-    image = models.ImageField(upload_to='question_images', blank=True)
-    correct_answer = models.IntegerField(default=0)
-    selected = models.IntegerField(default=0)
+    game_session = models.ForeignKey(GameSession)
+    movie = models.ForeignKey(Movie)
+    is_guess_correct = models.BooleanField(default=False)
+
+
+class Favourites (models.Model):
+    user = models.ForeignKey(UserProfile)
+    movie = models.ForeignKey(Movie)
+
 
 
 
