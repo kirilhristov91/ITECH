@@ -264,3 +264,4 @@ sample/build/outputs/apk/sample-debug.apk
  
 ITECH/.idea/
 *.pyc
+ITECH/Guess_The_Movie/views.py
