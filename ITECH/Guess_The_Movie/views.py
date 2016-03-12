@@ -125,6 +125,14 @@ def user_login(request):
     else:
          return render(request, 'guess_the_movie/login.html', {})
 
+def leaderboard(request):
+    context_dict = {}
+    return render(request, "guess_the_movie/leaderboard.html", context_dict)
+
+def about(request):
+    context_dict = {}
+    return render(request, "guess_the_movie/about.html", context_dict)
+
 
 def user_logout(request):
     # Since we know the user is logged in, we can now just log them out.
