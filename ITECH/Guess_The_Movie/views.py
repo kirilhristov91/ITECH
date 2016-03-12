@@ -13,6 +13,8 @@ from Guess_The_Movie.forms import UserForm, UserProfileForm
 # Create your views here.
 
 
+
+
 def userView(request, user_name):
      # Create a context dictionary which we can pass to the template rendering engine.
     context_dict = {}
@@ -34,11 +36,31 @@ def index(request):
     context_dict = {}
     return render(request, "guess_the_movie/index.html", context_dict)
 
-def game_session(request):
+
+
+
+def question(request):
+
+    if request.method == 'GET':
+        question_id = request.GET['question_id']
+
+    points = 0
+    if question_id:
+        #Hardcoded to work with the user table change to wok with question table
+        user = UserProfile.objects.get(user=1)
+        if user:
+            points = user.total_points + 1
+            user.total_points =  points
+            user.save()
+    return HttpResponse(user.total_points)
+
+
+
+def game_session(request,):
     context_dict = {}
+    user = UserProfile.objects.get(user=1)
+    context_dict["user"] = user;
     return render(request, "guess_the_movie/game.html", context_dict)
-
-
 
  # A function to get an existing question
 def guestionView(request, questionID):
