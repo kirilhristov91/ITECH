@@ -162,3 +162,7 @@ def user_logout(request):
 
     # Take the user back to the homepage.
     return HttpResponseRedirect('/guess_the_movie/')
+
+def profile(request):
+    context_dict = {}
+    return render(request, "guess_the_movie/profile.html", context_dict)

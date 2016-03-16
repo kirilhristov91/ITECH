@@ -13,5 +13,6 @@ urlpatterns = patterns('',
         url(r'^about/$', views.about, name='about'),
         url(r'^question/$', views.question, name='like_category'),
         #url(r'^question/(?P<questionID>[\w\-]+)/$', views.guestionView, name='guestionview'),
+        url(r'^profile/$', views.profile, name='profile'),
     )
 
