@@ -16,11 +16,28 @@
 <body>
 <h1>This is the game html</h1>
 
-<strong id="like_count">{{ user.total_points }}</strong> people like this category
-   <button id="likes" data-queid="{{user.total_points}}" class="btn btn-primary" type="button">
-        <span class="glyphicon glyphicon-thumbs-up"></span>
-        Like
+<h1> {{ user.user.username }} </h1>
+<h3> {{ movies }}</h3>
+<h3>{{ answers }}</h3>
+<h1>{{ movies.0.image_url }}</h1>
+<img src={{ movies.0.image_url }} width="500" height="300" /> <!-- Images -->
+
+
+   <button id="likes" type="button" >
+        {{ answers.0.0 }}
         </button>
+
+   <button id="likes" type="button" >
+        {{ answers.0.1 }}
+        </button>
+
+    <button id="likes" type="button">
+        {{ answers.0.2}}
+    </button>
+
+    <button id="likes" type="button">
+        {{ answers.0.3}}
+    </button>
 
 </body>
 </html>
