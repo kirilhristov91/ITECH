@@ -9,10 +9,9 @@ from Guess_The_Movie.models import UserProfile
 from Guess_The_Movie.models import GameSession
 from Guess_The_Movie.models import Question
 from Guess_The_Movie.forms import UserForm, UserProfileForm
-
+from random import randint
+import unicodedata
 # Create your views here.
-
-
 
 
 def userView(request, user_name):
@@ -56,11 +55,56 @@ def question(request):
 
 
 
-def game_session(request,):
+def game_session(request):
     context_dict = {}
-    user = UserProfile.objects.get(user=1)
-    context_dict["user"] = user;
-    return render(request, "guess_the_movie/game.html", context_dict)
+
+    if request.user.is_authenticated():
+        currentUser = UserProfile.objects.get(user=request.user)
+        context_dict["user"] = currentUser
+
+        numberOfMovies = 1165#Movie.objects.filter().count()
+        moviesArray = []
+        answersArray = []
+        index = 0
+        while index<10:
+
+            randomId = randint(0, numberOfMovies)
+            movie = Movie.objects.get(id=randomId)
+            options = movie.other_options.split(",")
+            #print options
+            answers = []
+
+            flag=0
+            numberOfOptions=11
+            while (flag<3):
+                randomMovie = randint(0, numberOfOptions)
+                a = options.pop(randomMovie)
+                a = unicodedata.normalize('NFKD', a).encode('ascii','ignore')
+                a = a.replace('"', "")
+                a = a.lstrip()
+                answers.append(a)
+                flag = flag + 1
+                numberOfOptions = numberOfOptions - 1
+
+            title = movie.title
+            title = unicodedata.normalize('NFKD', title).encode('ascii','ignore')
+            title = title.replace('"', "")
+            title = title.lstrip()
+            answers.append(title)
+            answers = sorted(answers)
+            answersArray.append(answers)
+            moviesArray.append(movie)
+            index = index + 1
+
+        context_dict["answers"] = answersArray
+        context_dict["movies"] = moviesArray
+
+        print context_dict["user"].user.username
+        return render(request, "guess_the_movie/game.html", context_dict)
+
+    else:
+        return render(request, 'guess_the_movie/login.html', {})
+
 
  # A function to get an existing question
 def guestionView(request, questionID):
