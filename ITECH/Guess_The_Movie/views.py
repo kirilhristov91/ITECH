@@ -8,6 +8,7 @@ from Guess_The_Movie.models import User
 from Guess_The_Movie.models import UserProfile
 from Guess_The_Movie.models import GameSession
 from Guess_The_Movie.models import Question
+from Guess_The_Movie.models import Movie
 from Guess_The_Movie.forms import UserForm, UserProfileForm
 from random import randint
 import unicodedata
