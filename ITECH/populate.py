@@ -26,16 +26,11 @@ def addAllMovies():
     f = open('movieInfo.csv','rt')
     reader = csv.reader(f)
     for row in reader: 
-        st = str(row[3:])
-        #replace extra characters 
-        for char in ['\'','[',']']:
-              st=st.replace(char,'') 
+        add_Movie(row[0],row[1],row[2],row[3],row[4])
 
-
-        add_Movie(row[0],row[1],row[2], st)
-
-def add_Movie(title, poster, screenshot, options):
+def add_Movie(imdbid,title, poster, screenshot, options):
     m = Movie.objects.create(title=title)
+    m.imdb_id=imdbid
     m.image_url= screenshot 
     m.poster_url = poster
     m.other_options = options
