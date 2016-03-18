@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class UserProfile (models.Model):
     user = models.OneToOneField(User)
     picture = models.ImageField(upload_to='profile_images', blank=True)
@@ -31,12 +32,19 @@ class GameSession (models.Model):
 class Question (models.Model):
     game_session = models.ForeignKey(GameSession)
     movie = models.ForeignKey(Movie)
+    index = models.IntegerField()
     is_guess_correct = models.BooleanField(default=False)
+
+
+class Answer(models.Model):
+    question = models.ForeignKey(Question)
+    text = models.CharField(max_length = 256)
 
 
 class Favourites (models.Model):
     user = models.ForeignKey(UserProfile)
     movie = models.ForeignKey(Movie)
+
 
 
 

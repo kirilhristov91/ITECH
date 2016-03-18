@@ -12,7 +12,7 @@ urlpatterns = patterns('',
         url(r'^leaderboard/$', views.leaderboard, name='leaderboard'),
         url(r'^about/$', views.about, name='about'),
         url(r'^question/$', views.question, name='like_category'),
-        #url(r'^question/(?P<questionID>[\w\-]+)/$', views.guestionView, name='guestionview'),
         url(r'^profile/$', views.profile, name='profile'),
+        url(r'^question/(?P<question_id>[0-9]+)/update/$', views.update_question, name='update_question'),
     )
 

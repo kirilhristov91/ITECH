@@ -9,6 +9,8 @@ from Guess_The_Movie.models import UserProfile
 from Guess_The_Movie.models import GameSession
 from Guess_The_Movie.models import Question
 from Guess_The_Movie.models import Movie
+from Guess_The_Movie.models import Answer
+from Guess_The_Movie.models import Favourites
 from Guess_The_Movie.forms import UserForm, UserProfileForm
 from random import randint
 import unicodedata
@@ -37,8 +39,6 @@ def index(request):
     return render(request, "guess_the_movie/index.html", context_dict)
 
 
-
-
 def question(request):
 
     if request.method == 'GET':
@@ -55,56 +55,90 @@ def question(request):
     return HttpResponse(user.total_points)
 
 
-
 def game_session(request):
-    context_dict = {}
-
     if request.user.is_authenticated():
         currentUser = UserProfile.objects.get(user=request.user)
+        context_dict = {}
         context_dict["user"] = currentUser
 
-        numberOfMovies = 1165#Movie.objects.filter().count()
-        moviesArray = []
-        answersArray = []
-        index = 0
-        while index<10:
+        gameSession = GameSession(user=currentUser)
+        gameSession.save()
+        movies_answers = get_movies()
+        moviesArray = movies_answers['moviesArray']
+        answersArray = movies_answers['answersArray']
+        context_dict["answers"] = movies_answers['moviesArray']
+        context_dict["movies"] = movies_answers['answersArray']
+        context_dict['game_session'] = gameSession
 
-            randomId = randint(0, numberOfMovies)
-            movie = Movie.objects.get(id=randomId)
-            options = movie.other_options.split(",")
-            #print options
-            answers = []
+        i=0
+        while i < len(moviesArray):
+            current_movie = moviesArray[i]
+            answers = answersArray[i]
+            question = Question(game_session=gameSession, movie=current_movie, index = i)
+            question.save()
+            for answer in answers:
+                Answer(question=question, text=answer).save()
+            i = i + 1
 
-            flag=0
-            numberOfOptions=11
-            while (flag<3):
-                randomMovie = randint(0, numberOfOptions)
-                a = options.pop(randomMovie)
-                a = unicodedata.normalize('NFKD', a).encode('ascii','ignore')
-                a = a.replace('"', "")
-                a = a.lstrip()
-                answers.append(a)
-                flag = flag + 1
-                numberOfOptions = numberOfOptions - 1
-
-            title = movie.title
-            title = unicodedata.normalize('NFKD', title).encode('ascii','ignore')
-            title = title.replace('"', "")
-            title = title.lstrip()
-            answers.append(title)
-            answers = sorted(answers)
-            answersArray.append(answers)
-            moviesArray.append(movie)
-            index = index + 1
-
-        context_dict["answers"] = answersArray
-        context_dict["movies"] = moviesArray
-
-        print context_dict["user"].user.username
-        return render(request, "guess_the_movie/game.html", context_dict)
-
+        return render(request, 'guess_the_movie/game.html', context_dict)
     else:
         return render(request, 'guess_the_movie/login.html', {})
+
+
+def update_question(request, question_id):
+    print ('update question')
+    if request.user.is_authenticated():
+        currentUser = UserProfile.objects.get(user=request.user)
+        context_dict = {}
+        context_dict["user"] = currentUser
+        print (question_id)
+        print (request.POST)
+        question = Question.objects.get(id=question_id)
+        question.is_guess_correct = True
+        question.save()
+        print("omgomgomg")
+        return HttpResponse(status=200)
+    else:
+        return render(request, 'guess_the_movie/login.html', {})
+
+
+def get_movies():
+    numberOfMovies = 1674#Movie.objects.filter().count()
+    moviesArray = []
+    answersArray = []
+    index = 0
+    while index < 10:
+
+        randomId = randint(0, numberOfMovies)
+        print randomId
+        movie = Movie.objects.get(id=randomId)
+        options = movie.other_options.split(",")
+        #print options
+        answers = []
+
+        flag=0
+        numberOfOptions=11
+        while flag<3:
+            randomMovie = randint(0, numberOfOptions)
+            a = options.pop(randomMovie)
+            a = unicodedata.normalize('NFKD', a).encode('ascii','ignore')
+            a = a.replace('"', "")
+            a = a.lstrip()
+            answers.append(a)
+            flag = flag + 1
+            numberOfOptions = numberOfOptions - 1
+
+        title = movie.title
+        title = unicodedata.normalize('NFKD', title).encode('ascii','ignore')
+        title = title.replace('"', "")
+        title = title.lstrip()
+        answers.append(title)
+        answers = sorted(answers)
+        answersArray.append(answers)
+        moviesArray.append(movie)
+        index = index + 1
+
+    return {'moviesArray':moviesArray, 'answersArray':answersArray}
 
 
  # A function to get an existing question

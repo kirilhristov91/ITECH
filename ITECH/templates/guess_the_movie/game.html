@@ -1,43 +1,107 @@
-
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 
-    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-        <!-- Bootstrap Core JavaScript -->
+  <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+  <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+  <!-- Bootstrap Core JavaScript -->
 
-    <script src="/static/js/bootstrap.min.js"></script>
-    <script src="/static/js/rango-ajax.js"></script>
+  <script src="/static/js/bootstrap.min.js"></script>
+  <script src="/static/js/rango-ajax.js"></script>
+  <link rel="stylesheet" href="/static/css/guessthemovie.css" type="text/css">
 
 </head>
+
 <body>
-<h1>This is the game html</h1>
+  <h1>This is the game html</h1> {{game_session}}
+  <script>
+    // using jQuery
+    function getCookie(name) {
+      var cookieValue = null;
+      if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+          var cookie = jQuery.trim(cookies[i]);
+          // Does this cookie string begin with the name we want?
+          if (cookie.substring(0, name.length + 1) == (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+      }
+      return cookieValue;
+    }
+    var csrftoken = getCookie('csrftoken');
 
-<h1> {{ user.user.username }} </h1>
-<h3> {{ movies }}</h3>
-<h3>{{ answers }}</h3>
-<h1>{{ movies.0.image_url }}</h1>
-<img src={{ movies.0.image_url }} width="500" height="300" /> <!-- Images -->
+    function csrfSafeMethod(method) {
+      // these HTTP methods do not require CSRF protection
+      return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
 
+    function sameOrigin(url) {
+      // test that a given url is a same-origin URL
+      // url could be relative or scheme relative or absolute
+      var host = document.location.host; // host + port
+      var protocol = document.location.protocol;
+      var sr_origin = '//' + host;
+      var origin = protocol + sr_origin;
+      // Allow absolute or scheme relative URLs to same origin
+      return (url == origin || url.slice(0, origin.length + 1) == origin + '/') ||
+        (url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
+        // or any other URL that isn't scheme relative or absolute i.e relative.
+        !(/^(\/\/|http:|https:).*/.test(url));
+    }
+    $.ajaxSetup({
+      beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+          xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+      }
+    });
+  </script>
+  <br>
+  {% for question in game_session.question_set.all %}
+  <div id="{{question.id}}" class="question" style="display:{% if forloop.first %} block; {% else %} none; {% endif %}">
 
-   <button id="likes" type="button" >
-        {{ answers.0.0 }}
-        </button>
-
-   <button id="likes" type="button" >
-        {{ answers.0.1 }}
-        </button>
-
-    <button id="likes" type="button">
-        {{ answers.0.2}}
+    <img src="{{ question.movie.image_url }}" width="500" height="300" />
+    {% for answer in question.answer_set.all %}
+    <button id="{{answer.id}}" type="button" value="{{answer.text}}">
+      {{answer.text}}
     </button>
-
-    <button id="likes" type="button">
-        {{ answers.0.3}}
-    </button>
+    <script type="text/javascript">
+      $("#{{answer.id}}").click(function(event) {
+        if ("{{question.movie.title}}" === $(this).attr("value")) {
+          $(this).addClass("correctGuess");
+          $.ajax({
+            url: "/guess_the_movie/question/{{question.id}}/update/",
+            method: "POST",
+            data: {
+              "value": true,
+              CSRF: "{{csrf_token}}"
+            },
+            success: function(result) {
+              alert("updated");
+            }
+          });
+        } else {
+          $(this).addClass("wrongGuess");
+          alert("wrong");
+        }
+        var next = {{question.id}} + 1;
+        console.log(next);
+        console.log($("#" + next));
+        $("#{{question.id}}").hide();
+        $("#" + next).show();
+      });
+    </script>
+    {% endfor %}
+  </div>
+      {% endfor %}
 
 </body>
+
 </html>
