@@ -17,7 +17,6 @@
 </head>
 
 <body>
-  <h1>This is the game html</h1> {{game_session}}
   <script>
     // using jQuery
     function getCookie(name) {
@@ -64,15 +63,19 @@
     });
   </script>
   <br>
+  <p> This is question number: </p>
+    <p id ="questionNumber"> 1 </p>
   {% for question in game_session.question_set.all %}
   <div id="{{question.id}}" class="question" style="display:{% if forloop.first %} block; {% else %} none; {% endif %}">
 
     <img src="{{ question.movie.image_url }}" width="500" height="300" />
     {% for answer in question.answer_set.all %}
-    <button id="{{answer.id}}" type="button" value="{{answer.text}}">
+
+    <button id="{{answer.id}}" type="button" value="{{answer.text}}" onclick="increment()">
       {{answer.text}}
     </button>
     <script type="text/javascript">
+      var counter = 1;
       $("#{{answer.id}}").click(function(event) {
         if ("{{question.movie.title}}" === $(this).attr("value")) {
           $(this).addClass("correctGuess");
@@ -84,12 +87,10 @@
               CSRF: "{{csrf_token}}"
             },
             success: function(result) {
-              alert("updated");
             }
           });
         } else {
           $(this).addClass("wrongGuess");
-          alert("wrong");
         }
         var next = {{question.id}} + 1;
         console.log(next);
@@ -97,6 +98,22 @@
         $("#{{question.id}}").hide();
         $("#" + next).show();
       });
+
+      function add() {
+        if (counter == 10){
+          window.location = "/guess_the_movie/summary/{{game_session.id}}/"
+        }
+        else {
+          counter += 1
+          console.log("Counter " + counter);
+          return counter;
+        }
+      }
+
+      function increment(){
+        document.getElementById("questionNumber").innerHTML = add();
+      }
+
     </script>
     {% endfor %}
   </div>
