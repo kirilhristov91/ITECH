@@ -275,6 +275,8 @@ def summary(request,game_session_id):
 
 def leaderboard(request):
     context_dict = {}
+    allUsers = UserProfile.objects.all()
+    context_dict['allUsers']= allUsers
     return render(request, "guess_the_movie/leaderboard.html", context_dict)
 
 def about(request):

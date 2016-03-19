@@ -608,3 +608,44 @@ body {
     border:1px solid #a6ca8a;
 }
 .error:hover {  background-color: #d46c57; }
+
+.tableLeaderboard{
+ top: 20pt;
+ bottom: auto;
+}
+
+
+
+
+table.scroll {
+    width: 100%; /* Optional */
+    /* border-collapse: collapse; */
+    border-spacing: 0;
+
+}
+
+table.scroll tbody,
+table.scroll thead { display: block; }
+
+thead tr th {
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #6699ff;
+    color: white;
+}
+
+
+
+table.scroll tbody {
+    height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+tbody { border-top: 2px solid white; }
+
+tbody td, thead th {
+    width: 10%; /* Optional */
+    border-right: 1px solid white;
+}
