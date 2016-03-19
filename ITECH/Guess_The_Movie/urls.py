@@ -14,5 +14,6 @@ urlpatterns = patterns('',
         url(r'^question/$', views.question, name='like_category'),
         url(r'^profile/$', views.profile, name='profile'),
         url(r'^question/(?P<question_id>[0-9]+)/update/$', views.update_question, name='update_question'),
+        url(r'^summary/(?P<game_session_id>[0-9]+$)',views.summary, name ='sum'),
     )
 

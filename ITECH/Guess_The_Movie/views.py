@@ -111,7 +111,7 @@ def get_movies():
     index = 0
     while index < 10:
         print 'opa'
-        randomId = randint(1166, numberOfMovies)
+        randomId = randint(Movie.objects.order_by('id')[0].id, Movie.objects.order_by('-id')[0].id)
         print randomId
         movie = Movie.objects.get(id=randomId)
         exist = False
@@ -247,6 +247,31 @@ def user_login(request):
 
     else:
          return render(request, 'guess_the_movie/login.html', {})
+
+
+def summary(request,game_session_id):
+     if request.user.is_authenticated():
+        currentUser = UserProfile.objects.get(user=request.user)
+        context_dict={}
+        playersAnswers=[]
+        print type(currentUser)
+        print "Gameeeee",game_session_id
+        id2 = str(game_session_id.replace('/',''))
+        ob = GameSession.objects.get(id=game_session_id)
+        print type(ob.user)
+        if currentUser == ob.user:
+              print "v if"
+              answers = Question.objects.filter(game_session=ob)
+              playersAnswers=[]
+              for i in range(len(answers)):
+                   playersAnswers.append({'movie': str(answers[i].movie), 'answered': answers[i].is_guess_correct,'screen':answers[i].movie.image_url})
+        
+        print playersAnswers
+        context_dict['user'] = ob.user
+        context_dict['answers']= playersAnswers;
+        return render(request, 'guess_the_movie/summary.html', context_dict)
+
+
 
 def leaderboard(request):
     context_dict = {}
