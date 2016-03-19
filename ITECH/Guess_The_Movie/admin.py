@@ -7,7 +7,7 @@ class UserProfileAdmin(admin.ModelAdmin):
 
 
 class MovieAdmin(admin.ModelAdmin):
-    list_display = ('title','image_url')
+    list_display = ('id', 'title','image_url')
 
 
 class GameSessionAdmin(admin.ModelAdmin):

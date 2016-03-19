@@ -103,30 +103,32 @@ def update_question(request, question_id):
 
 
 def get_movies():
-    numberOfMovies = 1674#Movie.objects.filter().count()
+    numberOfMovies = 3239#Movie.objects.filter().count()
     moviesArray = []
     answersArray = []
     index = 0
     while index < 10:
 
-        randomId = randint(0, numberOfMovies)
+        randomId = randint(1166, numberOfMovies)
         print randomId
         movie = Movie.objects.get(id=randomId)
-        options = movie.other_options.split(",")
+        options = movie.other_options.split(", ")
         #print options
         answers = []
 
         flag=0
-        numberOfOptions=11
+        size = len(options)-1
         while flag<3:
-            randomMovie = randint(0, numberOfOptions)
+            randomMovie = randint(0, size)
+            #print len(options)
             a = options.pop(randomMovie)
             a = unicodedata.normalize('NFKD', a).encode('ascii','ignore')
             a = a.replace('"', "")
             a = a.lstrip()
             answers.append(a)
             flag = flag + 1
-            numberOfOptions = numberOfOptions - 1
+            size = size - 1
+
 
         title = movie.title
         title = unicodedata.normalize('NFKD', title).encode('ascii','ignore')
