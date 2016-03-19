@@ -19,7 +19,7 @@ class QuestionAdmin(admin.ModelAdmin):
 
 
 class FavouritesAdmin(admin.ModelAdmin):
-    list_display = ()
+    list_display = ('user', 'movie')
 
 
 class AnswerAdmin(admin.ModelAdmin):

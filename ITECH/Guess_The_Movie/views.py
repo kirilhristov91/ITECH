@@ -269,6 +269,8 @@ def summary(request,game_session_id):
         context_dict['user'] = ob.user
         context_dict['answers']= playersAnswers;
         return render(request, 'guess_the_movie/summary.html', context_dict)
+     else:
+         return render(request, 'guess_the_movie/login.html', {})
 
 
 def add_to_favourites(request,movieId):

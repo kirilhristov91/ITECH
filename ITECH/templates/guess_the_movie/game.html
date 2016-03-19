@@ -42,6 +42,7 @@
     }
 
     function sameOrigin(url) {
+      console.log("v origin sym")
       // test that a given url is a same-origin URL
       // url could be relative or scheme relative or absolute
       var host = document.location.host; // host + port
@@ -101,7 +102,7 @@
             //sleep(200);
             $("#{{question.id}}").hide();
             $("#" + next).show();
-          },1000
+          },200
         );
       });
 
