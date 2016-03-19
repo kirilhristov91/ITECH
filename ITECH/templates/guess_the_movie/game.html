@@ -77,8 +77,9 @@
     <script type="text/javascript">
       var counter = 1;
       $("#{{answer.id}}").click(function(event) {
+        var element = $(this);
         if ("{{question.movie.title}}" === $(this).attr("value")) {
-          $(this).addClass("correctGuess");
+          element.addClass("correctGuess");
           $.ajax({
             url: "/guess_the_movie/question/{{question.id}}/update/",
             method: "POST",
@@ -90,13 +91,18 @@
             }
           });
         } else {
-          $(this).addClass("wrongGuess");
+          element.addClass("wrongGuess");
         }
-        var next = {{question.id}} + 1;
-        console.log(next);
-        console.log($("#" + next));
-        $("#{{question.id}}").hide();
-        $("#" + next).show();
+       setTimeout(
+          function(){
+            var next = {{question.id}} + 1;
+            console.log(next);
+            console.log($("#" + next));
+            //sleep(200);
+            $("#{{question.id}}").hide();
+            $("#" + next).show();
+          },1000
+        );
       });
 
       function add() {
