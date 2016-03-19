@@ -112,13 +112,24 @@ def get_movies():
         randomId = randint(1166, numberOfMovies)
         print randomId
         movie = Movie.objects.get(id=randomId)
+        exist = False
+        for m in moviesArray:
+            if m.title == movie.title:
+                exist = True
+        if exist == True:
+            continue
+
         options = movie.other_options.split(", ")
+        if len(options) < 3:
+            continue
         #print options
         answers = []
+
 
         flag=0
         size = len(options)-1
         while flag<3:
+
             randomMovie = randint(0, size)
             #print len(options)
             a = options.pop(randomMovie)
