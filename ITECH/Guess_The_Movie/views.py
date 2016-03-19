@@ -12,6 +12,7 @@ from Guess_The_Movie.models import Movie
 from Guess_The_Movie.models import Answer
 from Guess_The_Movie.models import Favourites
 from Guess_The_Movie.forms import UserForm, UserProfileForm
+
 from random import randint
 import unicodedata
 # Create your views here.
@@ -98,7 +99,6 @@ def update_question(request, question_id):
         question = Question.objects.get(id=question_id)
         question.is_guess_correct = True
         question.save()
-        print("omgomgomg")
         return HttpResponse(status=200)
     else:
         return render(request, 'guess_the_movie/login.html', {})
@@ -254,22 +254,36 @@ def summary(request,game_session_id):
         currentUser = UserProfile.objects.get(user=request.user)
         context_dict={}
         playersAnswers=[]
-        print type(currentUser)
-        print "Gameeeee",game_session_id
+        
         id2 = str(game_session_id.replace('/',''))
         ob = GameSession.objects.get(id=game_session_id)
-        print type(ob.user)
+      
         if currentUser == ob.user:
-              print "v if"
+            
               answers = Question.objects.filter(game_session=ob)
               playersAnswers=[]
               for i in range(len(answers)):
-                   playersAnswers.append({'movie': str(answers[i].movie), 'answered': answers[i].is_guess_correct,'screen':answers[i].movie.image_url})
+                   playersAnswers.append({'movie': answers[i].movie, 'answered': answers[i].is_guess_correct})
         
         print playersAnswers
         context_dict['user'] = ob.user
         context_dict['answers']= playersAnswers;
         return render(request, 'guess_the_movie/summary.html', context_dict)
+
+
+def add_to_favourites(request,movieId):
+    print "in addd"
+    if request.user.is_authenticated():
+        currentUser = UserProfile.objects.get(user=request.user)
+        currentMovie = Movie.objects.get(id=movieId)
+        fav = Favourites(user=currentUser,movie=currentMovie)
+        fav.save()
+        print "here"
+        return HttpResponse(status=200)
+
+    else:
+        return render(request, 'guess_the_movie/login.html', {})
+
 
 
 

@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+ <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+  <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+  <!-- Bootstrap Core JavaScript -->
+
+  <script src="/static/js/bootstrap.min.js"></script>
+  <script src="/static/js/rango-ajax.js"></script>
+
 
 <head>
 
@@ -36,6 +45,40 @@
 </head>
 
 <body id="page-top">
+    <script>
+    // using jQuery
+    function getCookie(name) {
+      var cookieValue = null;
+      if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+          var cookie = jQuery.trim(cookies[i]);
+          // Does this cookie string begin with the name we want?
+          if (cookie.substring(0, name.length + 1) == (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+      }
+      return cookieValue;
+    }
+    var csrftoken = getCookie('csrftoken');
+    console.log(csrftoken); 
+    function csrfSafeMethod(method) {
+      // these HTTP methods do not require CSRF protection
+      return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+
+
+
+    $.ajaxSetup({
+      beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+          xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+      }
+    });
+  </script>
 
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -113,15 +156,44 @@
                 {% for answer in answers %}
 
              <tr height='75px'>
-                 <td width='175px' height='75px'><center> <img src="{{ answer.screen}}" width="125" height="75" /></center></td>
-                  <td width='175px'height='75px'> {{ answer.movie }}</td>
+                 <td width='175px' height='75px'><center> <img src="{{ answer.movie.image_url}}" width="125" height="75" /></center></td>
+                  <td width='175px'height='75px'> {{ answer.movie.title }}</td>
                   {% if answer.answered == True%}
 
-                         <td width='175px'height='75px'><center><span class="glyphicon glyphicon-ok fa-4x" style="color:green; font-size:75px;"></span><center></td>
+                         <td width='175px'height='75px'>
+                            <center><span class="glyphicon glyphicon-ok fa-4x" style="color:green; font-size:75px;"></span><center></td>
                   {% else %}
-                         <td width='175px'height='75px'><center><span class="glyphicon glyphicon-remove  fa-5x" style="color:red;font-size:75px;"></span></center></td>
+                         <td width='175px'height='75px'>
+                            <center><span class="glyphicon glyphicon-remove  fa-5x" style="color:red;font-size:75px;"></span></center></td>
                   {% endif %}
-                  <td>22</td>
+
+                  <td><button id="{{answer.movie.id}}" type="button"  >Add</button>   </td>
+                     <script type="text/javascript">
+      
+      $("#{{answer.movie.id}}").click(function(event) {
+        var element = $(this);
+        console.log('{{csrf_token}}');
+          $.ajax({
+
+            url: "/guess_the_movie/summary/{{answer.movie.id}}/update/",
+            method: "POST",
+            data: {
+            
+              CSRF: "{{csrf_token}}"
+
+            },
+            success: function(result) {
+            }
+          });
+      });
+    </script>
+
+
+
+
+
+               
+                  
             </tr>
                 {% endfor %}
 
