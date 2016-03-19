@@ -110,7 +110,7 @@ def get_movies():
     answersArray = []
     index = 0
     while index < 10:
-
+        print 'opa'
         randomId = randint(1166, numberOfMovies)
         print randomId
         movie = Movie.objects.get(id=randomId)

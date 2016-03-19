@@ -13,7 +13,7 @@ class UserProfile (models.Model):
 
 
 class Movie (models.Model):
-    imdb_id = models.CharField(max_length=9)
+    imdb_id = models.CharField(max_length=9,unique=True)
     title = models.CharField(max_length=256)
     image_url = models.URLField()
     poster_url = models.URLField()
