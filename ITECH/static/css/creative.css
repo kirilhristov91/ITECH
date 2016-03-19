@@ -53,6 +53,7 @@ p {
 
 .bg-primary {
     background-color: #f05f40;
+    padding-bottom: 450px;
 }
 
 .bg-dark {
@@ -62,10 +63,6 @@ p {
 
 .text-faded {
     color: rgba(255,255,255,.7);
-}
-
-section {
-    padding: 100px 0;
 }
 
 aside {
@@ -244,7 +241,7 @@ header .header-content .header-content-inner p {
 }
 
 .section-heading {
-    margin-top: 0;
+    margin-top: 20px;
 }
 
 .service-box {
@@ -633,6 +630,8 @@ thead tr th {
     text-align: center;
     background-color: #6699ff;
     color: white;
+    border-right: 1px solid white;
+
 }
 
 
@@ -648,4 +647,23 @@ tbody { border-top: 2px solid white; }
 tbody td, thead th {
     width: 10%; /* Optional */
     border-right: 1px solid white;
+}
+
+.addborders{
+border-all: 1px solid white;
+border: 1px solid white;
+}
+
+.tabletop5 {
+
+    bottom: 100px;
+    padding-bottom: 30px;
+}
+
+.padding-table{
+  padding-bottom: 80px;
+}
+
+.bigheading{
+    font-size: 85px;
 }

@@ -39,6 +39,8 @@ def userView(request, user_name):
 def index(request):
     # Go render the response and return it to the client.
     context_dict = {}
+    Userstop5 = UserProfile.objects.order_by('-total_points')[:5]
+    context_dict['top5Users']=  Userstop5
     return render(request, "guess_the_movie/index.html", context_dict)
 
 

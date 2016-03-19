@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:yellow="http://www.w3.org/1999/xhtml">
 
 <head>
 
@@ -15,8 +15,10 @@
     <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css">
 
     <!-- Custom Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+          rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
+          rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="static/font-awesome/css/font-awesome.min.css" type="text/css">
 
     <!-- Plugin CSS -->
@@ -28,144 +30,186 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
 </head>
 
 <body id="page-top">
 
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Guess The Movie</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a class="page-scroll" href="#">Home</a>
-                    </li>
-                      <li>
-                        <a class="page-scroll" href="/guess_the_movie/game">Play</a>
-                    </li>
-                      <li>
-                        <a class="page-scroll" href="/guess_the_movie/leaderboard">Leaderboards</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="/guess_the_movie/about">About</a>
-                    </li>
-                    {% if user.is_authenticated %}
-                    <li>
-                        <a class="page-scroll" href="">Welcome {{user.username}}</a>
-                    </li>
-                    <li>
-                    <a class="page-scroll" href="/guess_the_movie/logout/">Logout</a>
-                        </li>
-
-                    {% else %}
-                    <li>
-                        <a class="page-scroll" href="/guess_the_movie/login">Login</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="/guess_the_movie/register">Sign UP FREE</a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">Guess The Movie</a>
         </div>
-        <!-- /.container-fluid -->
-    </nav>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="page-scroll" href="#">Home</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="/guess_the_movie/game">Play</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="/guess_the_movie/leaderboard">Leaderboards</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="/guess_the_movie/about">About</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li>
+                    <a class="page-scroll" href="">Welcome {{user.username}}</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="/guess_the_movie/logout/">Logout</a>
+                </li>
+
+                {% else %}
+                <li>
+                    <a class="page-scroll" href="/guess_the_movie/login">Login</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="/guess_the_movie/register">Sign UP FREE</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
 
 
+<header>
 
-    <header>
+    <div class=" text-center">
+        <div id="carousel-example-generic" class="carousel slide">
+            <!-- Indicators -->
+            <ol class="carousel-indicators hidden-xs">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
 
-                <div class=" text-center">
-                    <div id="carousel-example-generic" class="carousel slide">
-                        <!-- Indicators -->
-                        <ol class="carousel-indicators hidden-xs">
-                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                        </ol>
-
-                        <!-- Wrapper for slides -->
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                <img class="img-responsive img-full" src="/static/img/movie2.jpg" alt="">
-                                   <div class="carousel-caption">
-                                    <h1>Can You Guess The Movie By Only One Screenshot</h1>
-                                    <p>Try to answer 10 multiple choice questions related to movies</p>
-                                       <p><a class="btn btn-primary btn-xl page-scroll" href="#">Play</a></p>
-                             </div>
-                            </div>
-                            <div class="item">
-                                <img class="img-responsive img-full" src="/static/img/antman1.jpg" alt="">
-                            </div>
-                            <div class="item">
-                                <img class="img-responsive img-full" src="/static/img/avengers.jpg" alt="">
-                            </div>
-                        </div>
-
-                        <!-- Controls -->
-                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                            <span class="icon-prev"></span>
-                        </a>
-                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                            <span class="icon-next"></span>
-                        </a>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img class="img-responsive img-full" src="/static/img/movie2.jpg" alt="">
+                    <div class="carousel-caption">
+                        <h1>Can You Guess The Movie By Only One Screenshot</h1>
+                        <p>Try to answer 10 multiple choice questions related to movies</p>
+                        <p><a class="btn btn-primary btn-xl page-scroll" href="#">Play</a></p>
                     </div>
                 </div>
+                <div class="item">
+                    <img class="img-responsive img-full" src="/static/img/antman1.jpg" alt="">
+                              <div class="carousel-caption">
+                                    <h1 style="font-size: 65px">Play and Become One of The Top 5 Players</h1>
+                                    <p>It will be hard, but you can do it!</p>
+                                    <p><a class="btn btn-primary btn-xl page-scroll" href="#">View top 5 Players</a></p>
+                            </div>
+                </div>
+                <div class="item">
+                    <img class="img-responsive img-full" src="/static/img/avengers.jpg" alt="">
 
-    </header>
+                      <div class="carousel-caption">
+                                    <h1 style="font-size: 65px">View the Leaderboard</h1>
+                                    <p>See all the players and their scores</p>
+                                    <p><a class="btn btn-primary btn-xl page-scroll" href="#">GO!</a></p>
+                            </div>
+
+                    </div>
+
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                <span class="icon-prev"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                <span class="icon-next"></span>
+            </a>
+        </div>
+    </div>
+
+</header>
 
 
+<section class="bg-primary" id="about">
+    <div class="container"
+    ">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 text-center">
+            <h2 class="section-heading">Top 5 Players </h2>
+            <hr class="light">
+            <div class=" section-heading carousel-caption tabletop5">
+                <div class="row padding-table">
+                    <div class="col-lg-12">
+                        <table class="table" id="table">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Score</th>
 
-    <section class="bg-primary" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">We've got what you need!</h2>
-                    <hr class="light">
-                    <p class="text-faded">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
-                    <a href="#" class="btn btn-default btn-xl">Get Started!</a>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            {% for user in top5Users %}
+                            <tr>
+                                <td class="addborders">{{ user.user.username }}</td>
+                                <td class="addborders">{{ user.total_points }}</td>
+                            </tr>
+                            {% endfor %}
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
                 </div>
             </div>
+
+            <a href="#" class="btn btn-default btn-xl">Try it now Yourself!</a>
         </div>
-    </section>
+    </div>
+    </div>
+</section>
 
 
-    <!-- jQuery -->
-    <script src="/static/js/jquery.js"></script>
+<!-- jQuery -->
+<script src="/static/js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="/static/js/bootstrap.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="/static/js/bootstrap.min.js"></script>
 
-    <!-- Plugin JavaScript -->
-    <script src="/static/js/jquery.easing.min.js"></script>
-    <script src="/static/js/jquery.fittext.js"></script>
-    <script src="/static/js/wow.min.js"></script>
+<!-- Plugin JavaScript -->
+<script src="/static/js/jquery.easing.min.js"></script>
+<script src="/static/js/jquery.fittext.js"></script>
+<script src="/static/js/wow.min.js"></script>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="/static/js/creative.js"></script>
+<!-- Custom Theme JavaScript -->
+<script src="/static/js/creative.js"></script>
 
-  <!-- Script to Activate the Carousel -->
-    <script>
+<!-- Script to Activate the Carousel -->
+<script>
     $('.carousel').carousel({
         interval: 5000 //changes the speed
     })
-    </script>
+
+
+</script>
 
 </body>
 
