@@ -38,7 +38,10 @@ def add_Movie(imdbid,title, poster, screenshot, options):
     return m
 
 def addUser(username, password):
-    User.objects.create_superuser(username, '', password)
+    u=User.objects.create_superuser(username, '', password)
+    u.save()
+    up = UserProfile(user=u)
+    up.save()
 
 
 # Start execution here!

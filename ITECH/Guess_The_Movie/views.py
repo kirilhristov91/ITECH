@@ -16,6 +16,8 @@ from random import randint
 import unicodedata
 # Create your views here.
 
+coding = 'utf-8'
+
 
 def userView(request, user_name):
      # Create a context dictionary which we can pass to the template rendering engine.
@@ -124,7 +126,11 @@ def get_movies():
             continue
         #print options
         answers = []
-
+         
+        title = movie.title
+        title = unicodedata.normalize('NFKD', title).encode('ascii','ignore')
+        title = title.replace('"', "")
+        title = title.lstrip()
 
         flag=0
         size = len(options)-1
@@ -134,17 +140,20 @@ def get_movies():
             #print len(options)
             a = options.pop(randomMovie)
             a = unicodedata.normalize('NFKD', a).encode('ascii','ignore')
-            a = a.replace('"', "")
             a = a.lstrip()
+            a = a.replace('"', "")
+            a = a.replace('\'','')
+            a = a.replace("]",'')
+            a = a.replace("[",'')
+            a = a.encode('utf-8')
+            print a
+            if(a is title): continue
             answers.append(a)
             flag = flag + 1
             size = size - 1
 
 
-        title = movie.title
-        title = unicodedata.normalize('NFKD', title).encode('ascii','ignore')
-        title = title.replace('"', "")
-        title = title.lstrip()
+       
         answers.append(title)
         answers = sorted(answers)
         answersArray.append(answers)
