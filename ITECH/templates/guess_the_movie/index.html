@@ -26,6 +26,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/static/css/creative.css" type="text/css">
+    
 
 
 
@@ -67,7 +68,7 @@
                     <a class="page-scroll" href="/guess_the_movie/game">Play</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="/guess_the_movie/leaderboard">Leaderboards</a>
+                    <a class="page-scroll" href="/guess_the_movie/leaderboard">Leaderboard</a>
                 </li>
                 <li>
                     <a class="page-scroll" href="/guess_the_movie/about">About</a>
@@ -114,24 +115,26 @@
                     <div class="carousel-caption">
                         <h1 class="biggerText">Can You Guess The Movie By Only One Screenshot</h1>
                         <p>Try to answer 10 multiple choice questions related to movies</p>
-                        <p><a class="btn btn-primary btn-xl page-scroll" href="#">Play</a></p>
+                        <p><a class="btn btn-primary btn-xl page-scroll" href="/guess_the_movie/game">Play</a></p>
                     </div>
                 </div>
                 <div class="item">
                     <img class="img-responsive img-full" src="/static/img/antman1.jpg" alt="">
                               <div class="carousel-caption">
-                                    <h1 class="biggerText">Play and Become One of The Top 5 Players</h1>
+                                    <h2 class="biggerText">Play and Become One of The Top 5 Players</h2>
                                     <p>It will be hard, but you can do it!</p>
-                                    <p><a class="btn btn-primary btn-xl page-scroll" href="#">View top 5 Players</a></p>
+
+                                    <p><button  id="goToBottom" class="btn btn-primary btn-xl page-scroll ">View top 5 Players</button></p>
+
                             </div>
                 </div>
                 <div class="item">
                     <img class="img-responsive img-full" src="/static/img/avengers.jpg" alt="">
 
                       <div class="carousel-caption">
-                                    <h1 class="biggerText">View the Leaderboard</h1>
+                                    <h2 class="biggerText">View the Leaderboard</h2>
                                     <p>See all the players and their scores</p>
-                                    <p><a class="btn btn-primary btn-xl page-scroll" href="#">GO!</a></p>
+                                    <p><a class="btn btn-primary btn-xl page-scroll" href="/guess_the_movie/leaderboard">Leaderboard</a></p>
                             </div>
 
                     </div>
@@ -187,7 +190,7 @@
                 </div>
             </div>
 
-            <a href="#" class="btn btn-default btn-xl">Try it now Yourself!</a>
+            <a href="/guess_the_movie/game" class="btn btn-default btn-xl">Try it now Yourself!</a>
         </div>
     </div>
     </div>
@@ -215,6 +218,18 @@
     })
 
 
+</script>
+
+<script>
+   $('#goToBottom').click(function(){
+
+  var WH = $(window).height();
+  var SH = $('body')[0].scrollHeight;
+  $('html, body').stop().animate({scrollTop: SH-WH}, 1000);
+
+  console.log( SH+' '+WH ); // TEST
+
+});
 </script>
 
 </body>
