@@ -11,12 +11,16 @@
   <!-- Bootstrap Core JavaScript -->
 
   <script src="/static/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css">
   <script src="/static/js/rango-ajax.js"></script>
   <link rel="stylesheet" href="/static/css/guessthemovie.css" type="text/css">
+   <link rel="stylesheet" href="/static/css/creative.css" type="text/css">
+  <!-- Styles for the buttons -->
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 
 </head>
 
-<body>
+<body class="backgroundQueston">
   <script>
     // using jQuery
     function getCookie(name) {
@@ -64,23 +68,33 @@
     });
   </script>
   <br>
-  <p> This is question number: </p>
-    <p id ="questionNumber"> 1 </p>
+  <div id="wrapper">
+  <p class="text-center offset-left styletitle">question number </p>
+    <p class="text-center offset-left" id ="questionNumber"> 1 </p>
+    </div>
   {% for question in game_session.question_set.all %}
-  <div id="{{question.id}}" class="question" style="display:{% if forloop.first %} block; {% else %} none; {% endif %}">
+  <div id="{{question.id}}" class="question row " style="display:{% if forloop.first %} block; {% else %} none; {% endif %}">
+<div class="col-md-4 col-md-offset-4 ">
+    <img  src="{{ question.movie.image_url }}" class="span12 pagination-centered borderImage " width="550" height="300" />
 
-    <img src="{{ question.movie.image_url }}" width="500" height="300" />
+</div>
     {% for answer in question.answer_set.all %}
 
-    <button id="{{answer.id}}" type="button" value="{{answer.text}}" onclick="increment()">
+    <button id="{{answer.id}}" type="button" class="btn below col-md-5 col-md-offset-4 row"  value="{{answer.text}}" onclick="increment()">
       {{answer.text}}
+
     </button>
+
+
+
+
     <script type="text/javascript">
       var counter = 1;
       $("#{{answer.id}}").click(function(event) {
         var element = $(this);
         if ("{{question.movie.title}}" === $(this).attr("value")) {
-          element.addClass("correctGuess");
+          element.removeClass("btn");
+          element.addClass("CorrectGuess");
           $.ajax({
             url: "/guess_the_movie/question/{{question.id}}/update/",
             method: "POST",
@@ -92,6 +106,7 @@
             }
           });
         } else {
+          element.removeClass("btn");
           element.addClass("wrongGuess");
         }
        setTimeout(

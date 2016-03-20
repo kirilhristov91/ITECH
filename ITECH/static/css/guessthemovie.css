@@ -7,12 +7,7 @@ h1 {
 }
 #header {}
 #footer {}
-.correctGuess {
-  background-color: #4CAF50;
-}
-.wrongGuess {
-  background-color: #f44336;
-}
+
 
 .show{
   display:block;
