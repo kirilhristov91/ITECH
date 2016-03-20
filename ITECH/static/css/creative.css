@@ -641,6 +641,7 @@ font-size: 65px;
 
 .tableHeading {
     height: 30px;
+    width: 10%
     line-height: 30px;
     text-align: center;
     background-color: #6699ff;
@@ -650,7 +651,9 @@ font-size: 65px;
 }
 
 
-
+.positionStatic{
+    position: static;
+}
 .tableLeaderboard table.scroll tbody {
     height: 400px;
     overflow-y: auto;
@@ -713,6 +716,10 @@ border: 1px solid white;
 position: relative;
 margin-right:50px ;
 margin-top: 10px;
+}
+
+.margin-small-top{
+margin-top: 40px;
 }
 
 .movedown{
