@@ -68,9 +68,9 @@
     });
   </script>
   <br>
-  <div id="wrapper">
-  <p class="text-center offset-left styletitle">question number </p>
-    <p class="text-center offset-left" id ="questionNumber"> 1 </p>
+  <div class="wrapper">
+  <h1 class="text-center offset-left styletitle letterspacing">question number </h1>
+    <h1 class="text-center offset-left styletitle" id ="questionNumber"> 1 </h1>
     </div>
   {% for question in game_session.question_set.all %}
   <div id="{{question.id}}" class="question row " style="display:{% if forloop.first %} block; {% else %} none; {% endif %}">
@@ -80,7 +80,7 @@
 </div>
     {% for answer in question.answer_set.all %}
 
-    <button id="{{answer.id}}" type="button" class="btn below col-md-5 col-md-offset-4 row"  value="{{answer.text}}" onclick="increment()">
+    <button id="{{answer.id}}" type="button" class="btn btnPlay below col-md-5 col-md-offset-4 row"  value="{{answer.text}}" onclick="increment()">
       {{answer.text}}
 
     </button>
@@ -94,6 +94,7 @@
         var element = $(this);
         if ("{{question.movie.title}}" === $(this).attr("value")) {
           element.removeClass("btn");
+          element.removeClass("btnPlay");
           element.addClass("CorrectGuess");
           $.ajax({
             url: "/guess_the_movie/question/{{question.id}}/update/",
@@ -107,6 +108,7 @@
           });
         } else {
           element.removeClass("btn");
+          element.removeClass("btnPlay");
           element.addClass("wrongGuess");
         }
        setTimeout(
