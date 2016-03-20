@@ -61,7 +61,7 @@
                 </li>
                   {% if user.is_authenticated %}
                     <li>
-                        <a class="page-scroll" href="/guess_the_movie/profile">Welcome {{user.username}}</a>
+                        <a class="page-scroll" href="/guess_the_movie/profile/">Welcome {{user.username}}</a>
                     </li>
                     <li>
                     <a class="page-scroll" href="/guess_the_movie/logout/">Logout</a>
@@ -82,20 +82,31 @@
     <!-- /.container-fluid -->
 </nav>
 
-    <div class="container margin_register">
+    <div class="container margin_register" style="float:left">
     <div class="row">
         <div class="col-sm-8 col-md-8 col-md-offset-1">
+
             <h1 class="text-left login-title">Profile</h1>
-            <div class="account-wall">
-                <div class ="form-signin">
-                Picture:<br/>
-                Username: {{user.username}}<br/>
-                    <a href="">Change Password</a> <a href="">Change Username</a>
-                    Games played:<br/>
+            <div style="float: left">
+                {% if userp.picture %}
+                <img src="{{userp.picture.url}}" class="img-responsive" width="50" height="10"/>
+                <a href="/guess_the_movie/upload_picture">Change picture</a><br/>
+                {% else %}
+                 <img src="/static/img/avatar.jpg" class="img-responsive" width="50" height="10"/>
+                <a href="/guess_the_movie/upload_picture">Add a picture</a><br/>
+                {% endif %}
+                <strong>Favorite Movies</strong><br/>
+                Games played:<br/>
                 Average points:<br/>
-                Best score:
+                Best score:<br/>
                     </div>
-        </div>
+                    <div style="float: right">
+                Username: {{user.username}}<br/>
+                    <a href="">Change Password</a> <a href="">Change Username</a><br/>
+                    </div>
+
+
+            </div>
     </div>
 </div>
         </div>
