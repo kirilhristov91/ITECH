@@ -13,7 +13,7 @@ urlpatterns = patterns('',
         url(r'^about/$', views.about, name='about'),
         url(r'^question/$', views.question, name='like_category'),
         url(r'^profile/$', views.profile, name='profile'),
-
+        url(r'^upload_picture/$', views.upload_picture, name='upload_picture'),
         url(r'^question/(?P<question_id>[0-9]+)/update/$', views.update_question, name='update_question'),
         url(r'^summary/(?P<game_session_id>[0-9]+$)',views.summary, name ='sum'),
         url(r'^summary/(?P<movieId>[0-9]+)/update/$',views.add_to_favourites, name='add_to_favourites'),
