@@ -310,5 +310,24 @@ def user_logout(request):
     return HttpResponseRedirect('/guess_the_movie/')
 
 def profile(request):
-    context_dict = {}
+    context_dict = {'userp':UserProfile.objects.get(user=request.user)}
     return render(request, "guess_the_movie/profile.html", context_dict)
+
+def upload_picture(request):
+     if request.method == "POST":
+         if request.user.is_authenticated():
+             currentUser = UserProfile.objects.get(user=request.user)
+             upload_form = UserProfileForm(data = request.POST,)
+             if upload_form.is_valid():
+                 upload = upload_form.save(commit=False)
+                 if 'picture' in request.FILES:
+                    upload.picture = request.FILES['picture']
+
+                    currentUser.picture = upload.picture
+                    currentUser.save()
+                    return HttpResponse('upload successful')
+             else:
+                 print upload_form.errors
+     else:
+        upload_form = UserProfileForm()
+        return render(request, "guess_the_movie/upload_picture.html", {'upload_form': upload_form})
