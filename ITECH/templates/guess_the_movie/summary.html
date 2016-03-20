@@ -109,7 +109,9 @@
                 <div class="item active">
                     <img class="img-responsive img-full" src="/static/img/blur.png" alt="">
                     <div class="carousel-caption offset-top">
+
                         {% if answers %}
+                        <p>You have answered {{correct}} questions correctly!</p>
                         <table class="table">
                             <thead>
                             <tr>
@@ -134,7 +136,7 @@
                                 <td width='175px' height='75px'>
                                     <center><img src="{{ answer.movie.image_url}}" width="125" height="75"/></center>
                                 </td>
-                                <td width='175px' height='75px'> {{ answer.movie.title }}</td>
+                                <td width='175px' height='75px'> {{ answer.movie.title }} </td>
                                 {% if answer.answered == True%}
 
                                 <td width='175px' height='75px'>
@@ -150,7 +152,7 @@
                                 {% endif %}
 
                                 <td>
-                                    <button id="{{answer.movie.id}}" type="button">Add</button>
+                                    <button  class="btn btn-primary" id="{{answer.movie.id}}" type="button">Add</>
                                 </td>
                                 <script type="text/javascript">
 

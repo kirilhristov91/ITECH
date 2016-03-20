@@ -72,8 +72,7 @@
   </script>
   <br>
   <div class="wrapper">
-  <h1 class="col-lg-6 col-lg-offset-3 text-center styletitle letterspacing">question number </h1>
-    <h1 class="col-lg-6 col-lg-offset-3 text-center styletitle" id ="questionNumber"> 1 </h1>
+  <h1 class="col-lg-6 col-lg-offset-3 text-center styletitle letterspacing" id ="questionNumber">question number 1 </h1>
     </div>
   {% for question in game_session.question_set.all %}
   <div id="{{question.id}}" class="question row " style="display:{% if forloop.first %} block; {% else %} none; {% endif %}">
@@ -83,7 +82,7 @@
 </div>
     {% for answer in question.answer_set.all %}
 
-    <button id="{{answer.id}}" type="button" class="btn btnPlay below col-lg-6 col-lg-offset-3 row"  value="{{answer.text}}" onclick="increment()">
+    <button id="{{answer.id}}" type="button" class="btn btnPlay below col-lg-6 col-lg-offset-3 row"  value="{{answer.text}}">
       {{answer.text}}
 
     </button>
@@ -94,6 +93,8 @@
     <script type="text/javascript">
       var counter = 1;
       $("#{{answer.id}}").click(function(event) {
+        console.log($(this).attr("value"));
+        console.log("{{question.movie.title}}");
         var element = $(this);
         if ("{{question.movie.title}}" === $(this).attr("value")) {
           element.removeClass("btn");
@@ -124,6 +125,7 @@
 
             $("#{{question.id}}").hide();
             $("#" + next).show();
+            increment()
           },600
         );
       });
@@ -140,7 +142,9 @@
       }
 
       function increment(){
-        document.getElementById("questionNumber").innerHTML = add();
+        var num = add()
+        if(num===undefined){}
+        else{document.getElementById("questionNumber").innerHTML = "question number " + num;}
       }
 
     </script>

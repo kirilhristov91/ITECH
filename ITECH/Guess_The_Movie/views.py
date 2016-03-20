@@ -51,7 +51,7 @@ def question(request):
 
     points = 0
     if question_id:
-        #Hardcoded to work with the user table change to wok with question table
+        #Hardcoded to work with the user table change to work with question table
         user = UserProfile.objects.get(user=1)
         if user:
             points = user.total_points + 1
@@ -91,30 +91,30 @@ def game_session(request):
 
 
 def update_question(request, question_id):
-    print ('update question')
     if request.user.is_authenticated():
         currentUser = UserProfile.objects.get(user=request.user)
-        context_dict = {}
-        context_dict["user"] = currentUser
-        print (question_id)
-        print (request.POST)
+
+        #update question
         question = Question.objects.get(id=question_id)
         question.is_guess_correct = True
         question.save()
+
+        #update users points
+        currentUser.total_points = currentUser.total_points + 1
+        currentUser.save()
         return HttpResponse(status=200)
     else:
         return render(request, 'guess_the_movie/login.html', {})
 
 
 def get_movies():
-    numberOfMovies = 3239#Movie.objects.filter().count()
+    minId = Movie.objects.order_by('id')[0].id
+    maxId = Movie.objects.order_by('-id')[0].id
     moviesArray = []
     answersArray = []
     index = 0
     while index < 10:
-        print 'opa'
-        randomId = randint(Movie.objects.order_by('id')[0].id, Movie.objects.order_by('-id')[0].id)
-        print randomId
+        randomId = randint(minId, maxId)
         movie = Movie.objects.get(id=randomId)
         exist = False
         for m in moviesArray:
@@ -257,32 +257,32 @@ def summary(request,game_session_id):
         context_dict={}
         playersAnswers=[]
         
-        id2 = str(game_session_id.replace('/',''))
-        ob = GameSession.objects.get(id=game_session_id)
-      
-        if currentUser == ob.user:
-            
-              answers = Question.objects.filter(game_session=ob)
+
+        gameSession = GameSession.objects.get(id=game_session_id)
+        if currentUser == gameSession.user:
+              correctAnswersCount = 0
+              answers = Question.objects.filter(game_session=gameSession)
               playersAnswers=[]
               for i in range(len(answers)):
                    playersAnswers.append({'movie': answers[i].movie, 'answered': answers[i].is_guess_correct})
-        
-        print playersAnswers
-        context_dict['user'] = ob.user
-        context_dict['answers']= playersAnswers;
+                   if answers[i].is_guess_correct:
+                        correctAnswersCount+=1
+
+        context_dict['user'] = gameSession.user
+        context_dict['answers']= playersAnswers
+        context_dict['correct'] = correctAnswersCount
+        print context_dict
         return render(request, 'guess_the_movie/summary.html', context_dict)
      else:
          return render(request, 'guess_the_movie/login.html', {})
 
 
 def add_to_favourites(request,movieId):
-    print "in addd"
     if request.user.is_authenticated():
         currentUser = UserProfile.objects.get(user=request.user)
         currentMovie = Movie.objects.get(id=movieId)
         fav = Favourites(user=currentUser,movie=currentMovie)
         fav.save()
-        print "here"
         return HttpResponse(status=200)
 
     else:
@@ -293,13 +293,12 @@ def add_to_favourites(request,movieId):
 
 def leaderboard(request):
     context_dict = {}
-    allUsers = UserProfile.objects.all()
+    allUsers = UserProfile.objects.order_by('-total_points')
     context_dict['allUsers']= allUsers
     return render(request, "guess_the_movie/leaderboard.html", context_dict)
 
 def about(request):
-    context_dict = {}
-    return render(request, "guess_the_movie/about.html", context_dict)
+    return render(request, "guess_the_movie/about.html", {})
 
 
 def user_logout(request):
