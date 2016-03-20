@@ -72,18 +72,18 @@
   </script>
   <br>
   <div class="wrapper">
-  <h1 class="text-center offset-left styletitle letterspacing">question number </h1>
-    <h1 class="text-center offset-left styletitle" id ="questionNumber"> 1 </h1>
+  <h1 class="col-lg-6 col-lg-offset-3 text-center styletitle letterspacing">question number </h1>
+    <h1 class="col-lg-6 col-lg-offset-3 text-center styletitle" id ="questionNumber"> 1 </h1>
     </div>
   {% for question in game_session.question_set.all %}
   <div id="{{question.id}}" class="question row " style="display:{% if forloop.first %} block; {% else %} none; {% endif %}">
-<div class="col-md-4 col-md-offset-4 ">
-    <img  src="{{ question.movie.image_url }}" class="span12 pagination-centered borderImage " width="550" height="300" />
+<div class="col-lg-6 col-lg-offset-3 text-center">
+    <img  src="{{ question.movie.image_url }}" class=" borderImage " width="600" height="350" />
 
 </div>
     {% for answer in question.answer_set.all %}
 
-    <button id="{{answer.id}}" type="button" class="btn btnPlay below col-md-5 col-md-offset-4 row"  value="{{answer.text}}" onclick="increment()">
+    <button id="{{answer.id}}" type="button" class="btn btnPlay below col-lg-6 col-lg-offset-3 row"  value="{{answer.text}}" onclick="increment()">
       {{answer.text}}
 
     </button>
