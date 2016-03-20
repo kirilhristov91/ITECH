@@ -609,6 +609,23 @@ body {
 }
 .error:hover {  background-color: #d46c57; }
 
+
+tr {
+width: 100%;
+display: inline-table;
+}
+
+tbody{
+  overflow-y: scroll;
+  height: 500px;
+  width: 100%;
+  position: absolute;
+}
+
+.noOverflow{
+     overflow-y: hidden;
+}
+
 .tableLeaderboard{
  top: 20pt;
  bottom: auto;
@@ -617,17 +634,17 @@ body {
 
 
 
-table.scroll {
+.tableLeaderboard table.scroll {
     width: 100%; /* Optional */
     /* border-collapse: collapse; */
     border-spacing: 0;
 
 }
 
-table.scroll tbody,
-table.scroll thead { display: block; }
+.tableLeaderboard table.scroll tbody,
+.tableLeaderboard table.scroll thead { display: block; }
 
-thead tr th {
+.tableHeading {
     height: 30px;
     line-height: 30px;
     text-align: center;
@@ -639,23 +656,46 @@ thead tr th {
 
 
 
-table.scroll tbody {
+.tableLeaderboard table.scroll tbody {
     height: 400px;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
-tbody { border-top: 2px solid white; }
+.tableLeaderboard tbody { border-top: 2px solid white; }
 
-tbody td, thead th {
-    width: 10%; /* Optional */
-    border-right: 1px solid white;
+.tableLeaderboard tbody td, thead th {
+    width: 10%;
+    text-align: center;
 }
 
-.addborders{
+.tabletop5 tbody td, thead th {
+    width: 10%;
+    text-align: center;
+}
+
+.tableLeaderboard .addborders{
 border-all: 1px solid white;
 border: 1px solid white;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .tabletop5 {
 
@@ -688,6 +728,9 @@ margin-right:20px ;
 margin-left:90px ;
 }
 
+.offset-top{
+top: 80px;
+}
 .styletitle{
  text-transform: uppercase;
  color:white

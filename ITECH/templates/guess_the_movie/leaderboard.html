@@ -113,9 +113,9 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
-                                <table class="table scroll" id="table">
+                                <table class="table tableLeaderboard scroll" id="table">
                                     <thead>
-                                    <tr>
+                                    <tr class="tableHeading">
                                         <th>Name</th>
                                         <th>Score</th>
 
@@ -124,9 +124,9 @@
                                     <tbody>
 
                                     {% for user in allUsers %}
-                                    <tr>
-                                        <td>{{ user.user.username }}</td>
-                                        <td>{{ user.total_points }}</td>
+                                    <tr >
+                                        <td >{{ user.user.username }}</td>
+                                        <td >{{ user.total_points }}</td>
                                     </tr>
                                     {% endfor %}
 
