@@ -327,7 +327,8 @@ def profile(request):
     if len(numberGames)==0:
            context_dict['avg'] = 0
     else:
-        context_dict['avg'] = float(sum)/len(numberGames)
+        context_dict['avg'] = round(float(sum)/len(numberGames),2)
+
     return render(request, "guess_the_movie/profile.html", context_dict)
 
 def upload_picture(request):
