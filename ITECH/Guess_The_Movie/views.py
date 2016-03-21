@@ -322,11 +322,13 @@ def profile(request):
         if tempMax > max:
             max = tempMax
         sum +=tempMax
-    print max
-    print sum
+
     context_dict['games'] = len(numberGames)
     context_dict['max'] = max
-    context_dict['avg'] = float(sum)/len(numberGames)
+    if len(numberGames)==0:
+           context_dict['avg'] = 0
+    else:
+        context_dict['avg'] = float(sum)/numberGames
     return render(request, "guess_the_movie/profile.html", context_dict)
 
 def upload_picture(request):
