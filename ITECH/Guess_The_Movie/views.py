@@ -128,7 +128,7 @@ def get_movies():
         options = movie.other_options.split(", ")
         if len(options) < 3:
             continue
-        #print options
+
         answers = []
          
         title = movie.title
@@ -183,10 +183,7 @@ def guestionView(request, questionID):
 
 
 def register(request):
-
     registered = False
-
-
     if request.method == 'POST':
 
         user_form = UserForm(data=request.POST)
@@ -254,6 +251,7 @@ def user_login(request):
 
 
 def summary(request,game_session_id):
+     print request.user
      if request.user.is_authenticated():
         currentUser = UserProfile.objects.get(user=request.user)
         context_dict={}
@@ -271,7 +269,8 @@ def summary(request,game_session_id):
                         correctAnswersCount+=1
         gameSession.points=correctAnswersCount
         gameSession.save()
-        context_dict['user'] = gameSession.user
+
+
         context_dict['answers']= playersAnswers
         context_dict['correct'] = correctAnswersCount
         print context_dict
@@ -328,7 +327,7 @@ def profile(request):
     if len(numberGames)==0:
            context_dict['avg'] = 0
     else:
-        context_dict['avg'] = float(sum)/numberGames
+        context_dict['avg'] = float(sum)/len(numberGames)
     return render(request, "guess_the_movie/profile.html", context_dict)
 
 def upload_picture(request):
