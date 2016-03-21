@@ -14,6 +14,7 @@ from Guess_The_Movie.models import Favourites
 from Guess_The_Movie.forms import UserForm, UserProfileForm
 
 from random import randint
+
 import unicodedata
 # Create your views here.
 
@@ -113,6 +114,7 @@ def get_movies():
     moviesArray = []
     answersArray = []
     index = 0
+
     while index < 10:
         randomId = randint(minId, maxId)
         movie = Movie.objects.get(id=randomId)
@@ -244,7 +246,7 @@ def user_login(request):
 
         else:
             print "Invalid login details"
-            return HttpResponse("Invalid login ")
+            return render(request, 'guess_the_movie/login.html', {"fail":True})
 
 
     else:
@@ -267,7 +269,8 @@ def summary(request,game_session_id):
                    playersAnswers.append({'movie': answers[i].movie, 'answered': answers[i].is_guess_correct})
                    if answers[i].is_guess_correct:
                         correctAnswersCount+=1
-
+        gameSession.points=correctAnswersCount
+        gameSession.save()
         context_dict['user'] = gameSession.user
         context_dict['answers']= playersAnswers
         context_dict['correct'] = correctAnswersCount
@@ -310,6 +313,20 @@ def user_logout(request):
 
 def profile(request):
     context_dict = {'userp':UserProfile.objects.get(user=request.user)}
+    numberGames = GameSession.objects.filter(user=request.user)
+    max = 0
+    sum = 0
+
+    for i in range(len(numberGames)):
+        tempMax = numberGames[i].points
+        if tempMax > max:
+            max = tempMax
+        sum +=tempMax
+    print max
+    print sum
+    context_dict['games'] = len(numberGames)
+    context_dict['max'] = max
+    context_dict['avg'] = float(sum)/len(numberGames)
     return render(request, "guess_the_movie/profile.html", context_dict)
 
 def upload_picture(request):
