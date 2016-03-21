@@ -683,7 +683,7 @@ p {
 
 .tableHeading {
     height: 30px;
-    width: 10%;
+    width: 100%;
     line-height: 30px;
     text-align: center;
     background-color: #6699ff;
