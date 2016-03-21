@@ -79,12 +79,12 @@
   {% for question in game_session.question_set.all %}
   <div id="{{question.id}}" class="question row " style="display:{% if forloop.first %} block; {% else %} none; {% endif %}">
 <div class="col-lg-6 col-lg-offset-3 text-center">
-    <img  src="{{ question.movie.image_url }}" class=" borderImage " width="600" height="350" />
+    <img  src="{{ question.movie.image_url }}" class=" borderImage img-responsive "  />
 
 </div>
     {% for answer in question.answer_set.all %}
 
-    <button id="{{answer.id}}" type="button" class="btn btnPlay below col-lg-6 col-lg-offset-3 col-md-offset-3row"  value="{{answer.text}}">
+    <button id="{{answer.id}}" type="button" class="btn btnPlay below col-lg-6 col-lg-offset-3 col-md-offset-3"  value="{{answer.text}}">
       {{answer.text}}
 
     </button>
