@@ -28,7 +28,7 @@
 </head>
 
 
-<body>
+<body  class="backgroundLeaderboard">
 
 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top affix">
     <div class="container-fluid">
@@ -97,27 +97,33 @@
                 {% endif %}
                 Username: {{user.username}}<br/>
                     <a href="/guess_the_movie/profile/change_password">Change Password</a>
-            </div>
-
-                <div class="profileCenter">
-                <strong>Favorite Movies</strong><br/>
-                {% for a in userfav %}
-                {{a.movie}}<br/>
-                {% empty %}
-                No favourite movies added.<br/>
-                {% endfor %}
-                    </div>
-
-                <div class="profileRight">
+                <br><br>
                     <strong>Game sessions</strong><br/>
                 Games played: {{games}}<br/>
-                Average points:{{avg}}<br/>
+                Average points:2<br/>
                 Best score:{{max}}<br/>
                     </div>
+                <div class="profileCenter">
+                     <table class="table table-bordered" style=" table-layout:fixed;width: 550px;">
+                    <thead>
+                    <tr>
+                        <th colspan="2">Favourites</th>
 
+                    </tr>
+                    </thead>
+                    <tbody id="favouritesBody">
+                    {% for u in userfav %}
+                    <tr style="display:block" >
+                        <td style="width: 150px;"><img src="{{u.movie.poster_url}}" width="50px" height="75px"/></td>
+                        <td style="width: 400px;word-wrap: break-word;">{{u.movie.title}}</td>
+                     </tr>
 
+                    {% endfor %}
 
+                    </tbody>
+                </table>
             </div>
+
     </div>
 </div>
         </div>
