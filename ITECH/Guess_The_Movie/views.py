@@ -311,7 +311,7 @@ def user_logout(request):
     return HttpResponseRedirect('/guess_the_movie/')
 
 def profile(request):
-    context_dict = {'userp':UserProfile.objects.get(user=request.user)}
+    context_dict = {'userp':UserProfile.objects.get(user=request.user), 'userfav':Favourites.objects.filter(user=request.user)}
     numberGames = GameSession.objects.filter(user=request.user)
     max = 0
     sum = 0
