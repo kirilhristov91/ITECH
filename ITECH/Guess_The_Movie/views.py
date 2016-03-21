@@ -311,7 +311,7 @@ def user_logout(request):
     return HttpResponseRedirect('/guess_the_movie/')
 
 def profile(request):
-    context_dict = {'userp':UserProfile.objects.get(user=request.user)}
+    context_dict = {'userp':UserProfile.objects.get(user=request.user), 'userfav':Favourites.objects.filter(user=request.user)}
     numberGames = GameSession.objects.filter(user=request.user)
     max = 0
     sum = 0
@@ -342,7 +342,11 @@ def upload_picture(request):
 
                     currentUser.picture = upload.picture
                     currentUser.save()
-                    return HttpResponse('upload successful')
+                    return HttpResponseRedirect('/guess_the_movie/profile')
+                 else:
+                    print "Upload unsuccessful"
+                    return render(request, 'guess_the_movie/upload_picture.html', {"fail":True})
+
              else:
                  print upload_form.errors
      else:
