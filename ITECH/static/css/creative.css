@@ -735,8 +735,8 @@ border: 1px solid white;
 
 width: 800px;
 height: 400px;
-border: 1px solid;
 
+background-color: #f2f2f2;
 padding-left: 10px;
 padding-right: 10px;
 }
@@ -744,7 +744,7 @@ padding-right: 10px;
 .profileLeft{
 width: 250px;
 height: 350px;
-
+background-color: #ffffff;
 float: left;
 text-align: center;
 }
@@ -752,7 +752,7 @@ text-align: center;
 .profileCenter{
 width: 250px;
 height: 350px;
-
+background-color: #ffffff;
 float: left;
 margin-left: 15px;
 text-align: center;
@@ -761,7 +761,7 @@ text-align: center;
 .profileRight{
 width: 250px;
 height: 350px;
-
+background-color: #ffffff;
 float: right;
 text-align: center;
 }

@@ -342,7 +342,11 @@ def upload_picture(request):
 
                     currentUser.picture = upload.picture
                     currentUser.save()
-                    return HttpResponse('upload successful')
+                    return HttpResponseRedirect('/guess_the_movie/profile')
+                 else:
+                    print "Upload unsuccessful"
+                    return render(request, 'guess_the_movie/upload_picture.html', {"fail":True})
+
              else:
                  print upload_form.errors
      else:
