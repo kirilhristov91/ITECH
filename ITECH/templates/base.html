@@ -1,6 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:yellow="http://www.w3.org/1999/xhtml">
+
 <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Guess the Movie</title>
+
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css">
 
@@ -17,6 +27,12 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/static/css/creative.css" type="text/css">
 
+
+
+
+
+
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -24,13 +40,11 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <title>Profile</title>
 </head>
 
+<body id="page-top">
 
-<body>
-
-<nav id="mainNav" class="navbar navbar-default navbar-fixed-top affix">
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -48,26 +62,26 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a class="page-scroll" href="/guess_the_movie/">Home</a>
+                    <a class="page-scroll" href="#">Home</a>
                 </li>
                 <li>
                     <a class="page-scroll" href="/guess_the_movie/game">Play</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="/guess_the_movie/leaderboard">Leaderboards</a>
+                    <a class="page-scroll" href="/guess_the_movie/leaderboard">Leaderboard</a>
                 </li>
                 <li>
                     <a class="page-scroll" href="/guess_the_movie/about">About</a>
                 </li>
-                  {% if user.is_authenticated %}
-                    <li>
-                        <a class="page-scroll" href="/guess_the_movie/profile/">Welcome {{user.username}}</a>
-                    </li>
-                    <li>
+                {% if user.is_authenticated %}
+                <li>
+                    <a class="page-scroll" href="/guess_the_movie/profile">Welcome {{user.username}}</a>
+                </li>
+                <li>
                     <a class="page-scroll" href="/guess_the_movie/logout/">Logout</a>
-                        </li>
+                </li>
 
-                    {% else %}
+                {% else %}
                 <li>
                     <a class="page-scroll" href="/guess_the_movie/login">Login</a>
                 </li>
@@ -82,50 +96,54 @@
     <!-- /.container-fluid -->
 </nav>
 
-    <div class="container margin_register" style="float:left">
-    <div class="row">
-        <div class="col-sm-8 col-md-8 col-md-offset-1">
 
-            <h1 class="text-left login-title">Profile</h1>
-            <div style="float: left">
-                {% if userp.picture %}
-                <img src="{{userp.picture.url}}" class="img-responsive" width="50" height="10"/>
-                <a href="/guess_the_movie/upload_picture">Change picture</a><br/>
-                {% else %}
-                 <img src="/static/img/avatar.jpg" class="img-responsive" width="50" height="10"/>
-                <a href="/guess_the_movie/upload_picture">Add a picture</a><br/>
-                {% endif %}
-                <strong>Favorite Movies</strong><br/>
-                Games played:<br/>
-                Average points:<br/>
-                Best score:<br/>
-                    </div>
-                    <div style="float: right">
-                Username: {{user.username}}<br/>
-                    <a href="">Change Password</a> <a href="">Change Username</a><br/>
-                    </div>
+<header>
 
-
-            </div>
+    <div class=" text-center">
+         {% block uppper %}{% endblock %}
     </div>
-</div>
-        </div>
+
+</header>
 
 
-   <!-- jQuery -->
-    <script src="/static/js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="/static/js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="/static/js/jquery.easing.min.js"></script>
-    <script src="/static/js/jquery.fittext.js"></script>
-    <script src="/static/js/wow.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <!--<script src="/static/js/creative.js"></script>-->
 
 
+<!-- jQuery -->
+<script src="/static/js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/static/js/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="/static/js/jquery.easing.min.js"></script>
+<script src="/static/js/jquery.fittext.js"></script>
+<script src="/static/js/wow.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/static/js/creative.js"></script>
+
+<!-- Script to Activate the Carousel -->
+<script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+
+
+</script>
+
+<script>
+   $('#goToBottom').click(function(){
+
+  var WH = $(window).height();
+  var SH = $('body')[0].scrollHeight;
+  $('html, body').stop().animate({scrollTop: SH-WH}, 1000);
+
+  console.log( SH+' '+WH ); // TEST
+
+});
+</script>
+
+{% block script %}{% endblock %}
 </body>
+
 </html>
