@@ -85,25 +85,36 @@
     <div class="container margin_register" style="float:left">
     <div class="row">
         <div class="col-sm-8 col-md-8 col-md-offset-1">
-
+            <div class="main-box">
             <h1 class="text-left login-title">Profile</h1>
-            <div style="float: left">
+            <div class="profileLeft">
                 {% if userp.picture %}
-                <img src="{{userp.picture.url}}" class="img-responsive" width="50" height="10"/>
-                <a href="/guess_the_movie/upload_picture">Change picture</a><br/>
+                <img src="{{userp.picture.url}}" class="img-responsive profileImage"/>
+                <a href="/guess_the_movie/upload_picture">Change picture</a><br/><br/>
                 {% else %}
-                 <img src="/static/img/avatar.jpg" class="img-responsive" width="50" height="10"/>
-                <a href="/guess_the_movie/upload_picture">Add a picture</a><br/>
+                 <img src="/static/img/avatar.jpg" class="img-responsive profileImage"/>
+                <a href="/guess_the_movie/upload_picture">Add a picture</a><br/><br/>
                 {% endif %}
+                Username: {{user.username}}<br/>
+                    <a href="">Change Password</a>
+            </div>
+
+                <div class="profileCenter">
                 <strong>Favorite Movies</strong><br/>
+                {% for a in userfav %}
+                {{a.movie}}<br/>
+                {% empty %}
+                No favourite movies added.<br/>
+                {% endfor %}
+                    </div>
+
+                <div class="profileRight">
+                    <strong>Game sessions</strong><br/>
                 Games played: {{games}}<br/>
                 Average points:{{avg}}<br/>
                 Best score:{{max}}<br/>
                     </div>
-                    <div style="float: right">
-                Username: {{user.username}}<br/>
-                    <a href="">Change Password</a> <a href="">Change Username</a><br/>
-                    </div>
+
 
 
             </div>
