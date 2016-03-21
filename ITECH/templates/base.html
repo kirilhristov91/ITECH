@@ -33,6 +33,8 @@
 
 
 
+
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -118,32 +120,12 @@
 <script src="/static/js/jquery.easing.min.js"></script>
 <script src="/static/js/jquery.fittext.js"></script>
 <script src="/static/js/wow.min.js"></script>
+<script src = "/static/js/guessTheMovie.js"></script>
 
 <!-- Custom Theme JavaScript -->
 <script src="/static/js/creative.js"></script>
 
 <!-- Script to Activate the Carousel -->
-<script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
-
-
-</script>
-
-<script>
-   $('#goToBottom').click(function(){
-
-  var WH = $(window).height();
-  var SH = $('body')[0].scrollHeight;
-  $('html, body').stop().animate({scrollTop: SH-WH}, 1000);
-
-  console.log( SH+' '+WH ); // TEST
-
-});
-</script>
-
-{% block script %}{% endblock %}
 </body>
 
 </html>

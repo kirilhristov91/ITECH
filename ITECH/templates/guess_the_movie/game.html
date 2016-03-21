@@ -52,7 +52,6 @@
     }
 
     function sameOrigin(url) {
-      console.log("v origin sym")
       // test that a given url is a same-origin URL
       // url could be relative or scheme relative or absolute
       var host = document.location.host; // host + port
@@ -96,8 +95,6 @@
     <script type="text/javascript">
       var counter = 1;
       $("#{{answer.id}}").click(function(event) {
-        console.log($(this).attr("value"));
-        console.log("{{question.movie.title}}");
         var element = $(this);
         if ("{{question.movie.title}}" === $(this).attr("value")) {
           element.removeClass("btn");
@@ -123,8 +120,7 @@
        setTimeout(
           function(){
             var next = {{question.id}} + 1;
-            console.log(next);
-            console.log($("#" + next));
+
 
             $("#{{question.id}}").hide();
             $("#" + next).show();
@@ -139,7 +135,6 @@
         }
         else {
           counter += 1
-          console.log("Counter " + counter);
           return counter;
         }
       }

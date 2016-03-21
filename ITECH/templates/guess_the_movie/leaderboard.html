@@ -152,51 +152,12 @@
 <script src="/static/js/creative.js"></script>
 <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
 
-
-<script>
-                $(function () {
-    $( '#table' ).searchable({
-        striped: true,
-        oddRow: { 'background-color': '#f5f5f5' },
-        evenRow: { 'background-color': '#fff' },
-        searchType: 'fuzzy'
-    });
-
-    $( '#searchable-container' ).searchable({
-        searchField: '#container-search',
-        selector: '.row',
-        childSelector: '.col-xs-4',
-        show: function( elem ) {
-            elem.slideDown(100);
-        },
-        hide: function( elem ) {
-            elem.slideUp( 100 );
-        }
-    })
-});
-
-
-</script>
+<script src = "/static/js/guessTheMovie.js"></script>
 
 <script>
 
 
-    var $table = $('table.scroll'),
-    $bodyCells = $table.find('tbody tr:first').children(),
-    colWidth;
 
-// Adjust the width of thead cells when window resizes
-$(window).resize(function() {
-    // Get the tbody columns width array
-    colWidth = $bodyCells.map(function() {
-        return $(this).width();
-    }).get();
-
-    // Set the width of thead columns
-    $table.find('thead tr').children().each(function(i, v) {
-        $(v).width(colWidth[i]);
-    });
-}).resize(); // Trigger resize handler
 
 </script>
 
