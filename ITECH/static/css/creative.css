@@ -43,9 +43,18 @@ p {
 
 .bg-primary {
     background-color: #f05f40;
-    padding-bottom: 450px;
+    padding-bottom: 100px;
 }
 
+.margin-bottom{
+margin-bottom: 50px;
+}
+
+.centerMy{
+  position: absolute;
+  left: 50%;
+  margin-left: -100px;
+}
 .bg-dark {
     color: #fff;
     background-color: #222;
@@ -195,6 +204,30 @@ header .header-content .header-content-inner hr {
     top: 200px;
     bottom: auto;
 }
+/* reduce the spacing in the carousal caption and the main elements*/
+@media only screen and (max-width: 630px) {
+    .container {
+      padding:0;
+      margin:0;
+    }
+
+    body {
+      padding:0;
+    }
+
+    .carousel-caption {
+    top: 50px;
+    bottom: auto;
+    padding-bottom:70px;
+}
+
+    .navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top {
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom:0;
+    }
+}
+
 header .header-content .header-content-inner p {
     margin-bottom: 50px;
     font-size: 16px;
@@ -623,11 +656,21 @@ tbody{
  top: 20pt;
  bottom: auto;
 }
-
+/*
 .biggerText{
 font-size: 65px;
 }
 
+*/
+h1 {
+  font-size: 5.9vw;
+}
+h2 {
+  font-size: 4.5vw;
+}
+p {
+  font-size: 3vmin;
+}
 
 .tableLeaderboard table.scroll {
     width: 100%; /* Optional */

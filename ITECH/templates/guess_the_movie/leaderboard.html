@@ -90,59 +90,59 @@
 
 <header>
     <div class=" text-center">
-            <div id="carousel-example-generic" class="carousel slide">
+        <div id="carousel-example-generic" class="carousel slide">
 
 
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner">
-                    <div class="item active">
-                        <img class="img-responsive img-full" src="/static/img/avengers.jpg" alt="">
-                        <div class="carousel-caption tableLeaderboard">
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img class="img-responsive img-full" src="/static/img/avengers.jpg" alt="">
+                    <div class="carousel-caption tableLeaderboard">
 
 
-                            <div class="row">
-                                <div class="col-lg-12 ">
-                                    <h3>Search by User or Score</h3>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-4 col-lg-offset-4">
-                                    <input type="search" id="search" value="" class="form-control"
-                                           placeholder="Search here">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 positionStatic margin-small-top">
-                                    <table class="table tableLeaderboard scroll" id="table">
-                                        <thead>
-                                        <tr class="tableHeading">
-                                            <th>Name</th>
-                                            <th>Score</th>
-
-                                        </tr>
-
-                                        <tbody>
-
-                                        {% for user in allUsers %}
-                                        <tr >
-                                            <td >{{ user.user.username }}</td>
-                                            <td >{{ user.total_points }}</td>
-                                        </tr>
-                                        {% endfor %}
-
-
-                                        </tbody>
-                                         </thead>
-                                    </table>
-
-                                </div>
+                        <div class="row">
+                            <div class="col-lg-12 ">
+                                <h3>Search by User or Score</h3>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-lg-offset-4">
+                                <input type="search" id="search" value="" class="form-control"
+                                       placeholder="Search here">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 positionStatic margin-small-top">
+                                <table class="table tableLeaderboard scroll" id="table">
+                                    <thead>
+                                    <tr class="tableHeading">
+                                        <th>Name</th>
+                                        <th>Score</th>
 
-                        <!-- Controls -->
+                                    </tr>
+
+                                    <tbody>
+
+                                    {% for user in allUsers %}
+                                    <tr >
+                                        <td >{{ user.user.username }}</td>
+                                        <td >{{ user.total_points }}</td>
+                                    </tr>
+                                    {% endfor %}
 
 
+                                    </tbody>
+                                     </thead>
+                                </table>
+
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- Controls -->
+
+
+                </div>
             </div>
 </header>
 
