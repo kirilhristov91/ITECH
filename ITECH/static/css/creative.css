@@ -628,6 +628,11 @@ body {
 
 }
 
+.backgroundLeaderboard{
+
+ background-image: url("/static/img/blurried-big.jpg");
+}
+
 .error {
     background:#e47c68  url("/static/img/fail.png") no-repeat 10px 50%;
     border:1px solid #a6ca8a;
@@ -701,6 +706,12 @@ p {
     height: 400px;
     overflow-y: auto;
     overflow-x: hidden;
+}
+/* reduce high of table when screen hight too small*/
+@media(max-height:568px) {
+   .tableLeaderboard table.scroll tbody {
+    height: 200px;
+    }
 }
 
 .tableLeaderboard tbody { border-top: 2px solid white; }
@@ -901,4 +912,22 @@ letter-spacing: 7px;
   text-decoration: none;
   text-transform: uppercase;
   white-space: normal;
+}
+
+
+#container {
+    width: 100%;
+  height: 100%
+  position: relative;
+}
+#navi,
+#infoi {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 400;
+  left: 400;
+}
+#infoi {
+  z-index: 10;
 }
