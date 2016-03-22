@@ -1,80 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css">
+{% extends 'base.html' %}
 
-    <!-- Custom Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
-          rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
-          rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="static/font-awesome/css/font-awesome.min.css" type="text/css">
+{% load staticfiles %}
 
-    <!-- Plugin CSS -->
-    <link rel="stylesheet" href="/static/css/animate.min.css" type="text/css">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/static/css/creative.css" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <title>Register</title>
-</head>
-
-
-<body>
-
-<nav id="mainNav" class="navbar navbar-default navbar-fixed-top affix">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand page-scroll" href="#page-top">Guess The Movie</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a class="page-scroll" href="/guess_the_movie/">Home</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="/guess_the_movie/game">Play</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="/guess_the_movie/leaderboard">Leaderboards</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="/guess_the_movie/about">About</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="/guess_the_movie/login">Login</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="/guess_the_movie/register">Sign UP FREE</a>
-                </li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container-fluid -->
-</nav>
-
+{% block title %}<title>Login</title>{% endblock %}
+{% block body %}<body id="page-top" background="/static/img/orange.jpg">{% endblock %}
+{% block uppper %}
 <div class="container margin_register">
     <div class="row">
-        <div class="col-sm-6 col-md-4 col-md-offset-4">
+        <div class="col-sm-6 col-md-4 col-md-offset-3">
             <h1 class="text-center login-title">Log in to continue to Guess The Movie</h1>
             <div class="account-wall">
                 <img class="profile-img"
@@ -92,22 +25,9 @@
         </div>
     </div>
 </div>
+{% endblock %}
 
 
-   <!-- jQuery -->
-    <script src="/static/js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="/static/js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="/static/js/jquery.easing.min.js"></script>
-    <script src="/static/js/jquery.fittext.js"></script>
-    <script src="/static/js/wow.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <!--<script src="/static/js/creative.js"></script>-->
 
 
-</body>
-</html>
+
