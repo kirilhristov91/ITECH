@@ -30,7 +30,7 @@ DEBUG = False
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = ["guessthemovie.pythonanywhere.com"]
+ALLOWED_HOSTS = ['guessthemovie.pythonanywhere.com/']
 
 
 # Application definition
