@@ -37,13 +37,20 @@
                 </td>
 
                 {% endif %}
+                {% if answer.fav %}
+                <td>
+                    <button class="btn btn-primary summaryButton" id="{{answer.movie.id}}" type="button" disabled="disabled">Add</button>
 
+
+                </td>
+
+                {% else %}
                 <td>
                     <button class="btn btn-primary summaryButton" id="{{answer.movie.id}}" type="button">Add</button>
 
 
                 </td>
-
+                {% endif %}
 
             </tr>
             {% endfor %}

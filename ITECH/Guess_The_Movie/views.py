@@ -264,7 +264,11 @@ def summary(request,game_session_id):
               answers = Question.objects.filter(game_session=gameSession)
               playersAnswers=[]
               for i in range(len(answers)):
-                   playersAnswers.append({'movie': answers[i].movie, 'answered': answers[i].is_guess_correct})
+                   alreadyInFav = False
+                   fav = Favourites.objects.filter(movie=answers[i].movie, user = request.user)
+                   if len(fav)!=0:
+                       alreadyInFav = True
+                   playersAnswers.append({'movie': answers[i].movie, 'answered': answers[i].is_guess_correct, 'fav':alreadyInFav})
                    if answers[i].is_guess_correct:
                         correctAnswersCount+=1
         gameSession.points=correctAnswersCount
