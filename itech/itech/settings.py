@@ -56,9 +56,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'ITECH.urls'
+ROOT_URLCONF = 'itech.urls'
 
-WSGI_APPLICATION = 'ITECH.wsgi.application'
+WSGI_APPLICATION = 'itech.wsgi.application'
 
 
 # Database

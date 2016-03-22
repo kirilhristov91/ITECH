@@ -1,5 +1,5 @@
 import os
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ITECH.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'itech.settings')
 
 import django
 django.setup()
