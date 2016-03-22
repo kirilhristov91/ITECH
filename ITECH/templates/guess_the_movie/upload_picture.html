@@ -2,7 +2,7 @@
 
 {% load staticfiles %}
 
-{% block title %}<title>Login</title>{% endblock %}
+{% block title %}<title>Upload Picture - {{user.username}}</title>{% endblock %}
 {% block body %}<body id="page-top" background="/static/img/orange.jpg">{% endblock %}
 {% block uppper %}
   <div class="container margin_register">
@@ -13,7 +13,7 @@
 
                  <a href="/guess_the_movie/profile">Back to profile</a><br />
 
-                <form id="user_form" method="post" action="/guess_the_movie/upload_picture/" enctype="multipart/form-data">
+                <form id="user_form" method="post" action="/guess_the_movie/profile/upload_picture/" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{upload_form.as_p}}
 

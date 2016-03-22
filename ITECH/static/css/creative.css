@@ -554,6 +554,14 @@ body {
     font-weight: 400;
     display: block;
 }
+
+.login-title2{
+   color: black;
+    font-size: 18px !important;
+    font-weight: 400;
+    display: block;
+
+}
 .profile-img
 {
     width: 96px;
