@@ -5,63 +5,62 @@
 {% block title %}<title>Register</title>{% endblock %}
 
 {% block uppper %}
-            <div id="carousel-example-generic" class="carousel slide">
-                            <!-- Indicators -->
-                            <ol class="carousel-indicators hidden-xs">
-                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                            </ol>
+    <div id="carousel-example-generic" class="carousel slide">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators hidden-xs">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    </ol>
 
-                            <!-- Wrapper for slides -->
-                            <div class="carousel-inner">
-                                <div class="item active">
-                                    <img class="img-responsive img-full" src="/static/img/antman1.jpg" alt="">
-                                    <div class="carousel-caption">
-                                    {% if registered %}
-                                   <div  id="message" class="success"><span>success: </span>
-                                      Your registration has been successful!</div>
-                                    <a href="/guess_the_movie/">Return to the homepage.</a><br />
-                                    {% else %}
-                                        <div  id="message2" class="error"  style="display:none"><span>fail: </span>
-                                      Your registration has not been successful!</div>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img class="img-responsive img-full" src="/static/img/antman1.jpg" alt="">
+                            <div class="carousel-caption">
+                            {% if registered %}
+                           <div  id="message" class="success"><span>success: </span>
+                              Your registration has been successful!</div>
+                            <a href="/guess_the_movie/">Return to the homepage.</a><br />
+                            {% else %}
+                                <div  id="message2" class="error"  style="display:none"><span>fail: </span>
+                              Your registration has not been successful!</div>
 
 
-                                     <form role="form"  method="post" action="/guess_the_movie/register/"
-                enctype="multipart/form-data">
-                                                {% csrf_token %}
+                             <form role="form"  method="post" action="/guess_the_movie/register/"
+        enctype="multipart/form-data" onsubmit="return checkRegistration(this);">
+                                        {% csrf_token %}
 
-                                <h2 class="form-signin-heading">Sign Up Here</h2>
+                        <h2 class="form-signin-heading">Sign Up Here</h2>
 
-                                <div class="form-group" style="width:200px;margin: 0 auto" >
-                                 <p class="required"> <label for="id_username">Username:</label>
-                                     <input class="form-control"  id="id_username" maxlength="30" name="username" type="text"  placeholder="Enter username"/></p>
+                        <div class="form-group" style="width:200px;margin: 0 auto" >
+                         <p class="required"> <label for="id_username">Username:</label>
+                             <input class="form-control"  id="id_username" maxlength="30" name="username" type="text"  placeholder="Enter username"/></p>
+                        </div>
+                         <div class="form-group"  style="width:200px;margin: 0 auto">
+                            <p class="required"><label for="id_email">E-mail:</label>
+                                <input class="form-control" id="id_email" name="email" type="email" placeholder="Enter email" /></p>
+                         </div>
+                        <div class="form-group"  style="width:200px;margin: 0 auto">
+                            <p class="required"><label for="id_password1">Password:</label>
+                                <input class="form-control" id="id_password1" name="password" type="password" placeholder="Enter password" /></p>
+                        </div>
+                        <div class="form-group"  style="width:200px;margin: 0 auto">
+                            <p class="required"><label for="id_password2">Password (again):</label>
+                         <input class="form-control" id="id_password2" name="password2" type="password" placeholder="Enter password again" /></p>
+                        </div>
+
+                                 <button type="submit" class="btn btn-default"  onclick="showDiv()">Submit</button>
+
+                                </form>
+                                {% endif %}
                                 </div>
-                                 <div class="form-group"  style="width:200px;margin: 0 auto">
-                                    <p class="required"><label for="id_email">E-mail:</label>
-                                        <input class="form-control" id="id_email" name="email" type="email" placeholder="Enter email" /></p>
-                                 </div>
-                                <div class="form-group"  style="width:200px;margin: 0 auto">
-                                    <p class="required"><label for="id_password1">Password:</label>
-                                        <input class="form-control" id="id_password1" name="password" type="password" placeholder="Enter password" /></p>
-                                </div>
-                                <div class="form-group"  style="width:200px;margin: 0 auto">
-                                    <p class="required"><label for="id_password2">Password (again):</label>
-                                 <input class="form-control" id="id_password2" name="password" type="password" placeholder="Enter password again" /></p>
-                                </div>
+                        </div>
+                    </div>
 
-
-                                <button type="submit" class="btn btn-default"  onclick="showDiv()">Submit</button>
-
-                                        </form>
-                                        {% endif %}
-                                        </div>
-                                </div>
-                            </div>
-
-                            <!-- Controls -->
+                    <!-- Controls -->
 
 
 
-            </div>
-        {% endblock %}
+    </div>
+{% endblock %}
 
 

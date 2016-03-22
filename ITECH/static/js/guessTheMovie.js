@@ -62,3 +62,47 @@ $(window).resize(function() {
 }).resize(); // Trigger resize handler
 
 });
+
+
+function checkRegistration(form)
+  {
+    if(form.username.value == "") {
+      alert("Error: Username cannot be blank!");
+      form.username.focus();
+      return false;
+    }
+
+    if(form.email.value == "") {
+      alert("Error: Email cannot be blank!");
+      form.email.focus();
+      return false;
+    }
+
+    if(form.password.value == ""){
+        alert("Password cannot be blank");
+        form.password.focus();
+        return false;
+    }else if (form.password.value != form.password2.value){
+        alert("Password not the same");
+        form.password.focus();
+        return false;
+
+    }
+
+    return true;
+  }
+
+function checkLogin(form)
+{
+    if(form.username.value == "") {
+      alert("Error: Username cannot be blank!");
+      form.username.focus();
+      return false;
+    }
+
+    if(form.password.value == "") {
+      alert("Error: Password cannot be blank!");
+      form.password.focus();
+      return false;
+    }
+}
