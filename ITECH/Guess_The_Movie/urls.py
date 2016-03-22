@@ -14,6 +14,5 @@ urlpatterns = patterns('',
         url(r'^question/(?P<question_id>[0-9]+)/update/$', views.update_question, name='update_question'),
         url(r'^summary/(?P<game_session_id>[0-9]+$)',views.summary, name ='sum'),
         url(r'^summary/(?P<movieId>[0-9]+)/update/$',views.add_to_favourites, name='add_to_favourites'),
-        url(r'^profile/change_password/$', views.change_password, name='change_password'),
     )
 

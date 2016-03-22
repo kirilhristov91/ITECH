@@ -10,7 +10,7 @@ from Guess_The_Movie.models import Question
 from Guess_The_Movie.models import Movie
 from Guess_The_Movie.models import Answer
 from Guess_The_Movie.models import Favourites
-from Guess_The_Movie.forms import UserForm, UserProfileForm, resetPasswordForm
+from Guess_The_Movie.forms import UserForm, UserProfileForm
 
 from random import randint
 import unicodedata
@@ -318,22 +318,3 @@ def upload_picture(request):
     else:
         upload_form = UserProfileForm()
         return render(request, "guess_the_movie/upload_picture.html", {'upload_form': upload_form})
-
-
-def change_password(request):
-    change = False
-    if request.method == 'POST':
-        resetForm = resetPasswordForm(data=request.POST, )
-        if resetForm.is_valid():
-            reset = resetForm.save()
-            reset.set_password(reset.password)
-            reset.save()
-
-            change = True
-        else:
-            print resetForm.errors
-    else:
-        resetForm = resetPasswordForm()
-    return render(request,
-                  'guess_the_movie/change_password.html',
-                  {'resetForm': resetForm, 'change': change})
