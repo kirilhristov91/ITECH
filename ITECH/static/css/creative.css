@@ -1001,10 +1001,15 @@ tbody{
       background-image: url("/static/img/blue-burn.jpg");
 }
 .tablewidth{
-  width:175px;}
+ 
+  width:20vw;}
+
+  .tablewidthHeading{
+  width: 33%
+  }
 
 .tableheight{
-  height:75px;}
+  height:5vw;}
 
 .tablePicDimensions{
   width:125px;
