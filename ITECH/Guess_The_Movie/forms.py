@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from Guess_The_Movie.models import UserProfile
+from guess_the_movie.models import UserProfile
 
 class UserForm(forms.ModelForm):
    # username = forms.CharField(max_length = 128, help_text = "Please enter username.")

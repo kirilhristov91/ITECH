@@ -8,7 +8,7 @@ import csv
 import sys
 
       
-from Guess_The_Movie.models import Movie, UserProfile
+from guess_the_movie.models import Movie, UserProfile
 from django.contrib.auth.models import User
 
 def populate():
@@ -46,5 +46,5 @@ def addUser(username, password):
 
 # Start execution here!
 if __name__ == '__main__':
-    print "Starting Guess_The_Movie population script..."
+    print "Starting guess_the_movie population script..."
     populate()

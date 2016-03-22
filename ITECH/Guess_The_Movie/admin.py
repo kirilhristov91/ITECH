@@ -1,5 +1,5 @@
 from django.contrib import admin
-from Guess_The_Movie.models import UserProfile, Question, GameSession, Movie, Favourites, Answer
+from guess_the_movie.models import UserProfile, Question, GameSession, Movie, Favourites, Answer
 
 
 class UserProfileAdmin(admin.ModelAdmin):

@@ -2,9 +2,9 @@ from django.test import TestCase
 
 # Create your tests here.
 from django.contrib.auth.models import User
-from Guess_The_Movie.models import Movie
-from Guess_The_Movie.models import UserProfile
-from Guess_The_Movie.models import Favourites
+from guess_the_movie.models import Movie
+from guess_the_movie.models import UserProfile
+from guess_the_movie.models import Favourites
 from django.core.urlresolvers import reverse
 
 

@@ -3,14 +3,14 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 
-from Guess_The_Movie.models import User
-from Guess_The_Movie.models import UserProfile
-from Guess_The_Movie.models import GameSession
-from Guess_The_Movie.models import Question
-from Guess_The_Movie.models import Movie
-from Guess_The_Movie.models import Answer
-from Guess_The_Movie.models import Favourites
-from Guess_The_Movie.forms import UserForm, UserProfileForm
+from guess_the_movie.models import User
+from guess_the_movie.models import UserProfile
+from guess_the_movie.models import GameSession
+from guess_the_movie.models import Question
+from guess_the_movie.models import Movie
+from guess_the_movie.models import Answer
+from guess_the_movie.models import Favourites
+from guess_the_movie.forms import UserForm, UserProfileForm
 
 from random import randint
 import unicodedata

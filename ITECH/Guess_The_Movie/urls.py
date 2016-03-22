@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, url
-from Guess_The_Movie import views
+from guess_the_movie import views
 
 urlpatterns = patterns('',
         url(r'^$', views.index, name='index'),

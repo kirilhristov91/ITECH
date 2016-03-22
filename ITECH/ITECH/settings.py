@@ -26,7 +26,7 @@ STATIC_PATH = os.path.join(BASE_DIR,'static')
 SECRET_KEY = 'hkqp5(pj8#7y$v)^7i-3bc+^fntr2oja!yi=t77pamom2olpoe'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = True
 
@@ -42,7 +42,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Guess_The_Movie',
+    'guess_the_movie',
 
 )
 
