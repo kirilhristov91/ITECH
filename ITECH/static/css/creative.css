@@ -627,6 +627,14 @@ body {
 
 }
 
+
+.backgroundRules{
+
+    background-image: url("/static/img/movie.jpg");
+
+
+}
+
 .backgroundLeaderboard{
 
  background-image: url("/static/img/blurried-big.jpg");
@@ -1001,7 +1009,7 @@ tbody{
       background-image: url("/static/img/blue-burn.jpg");
 }
 .tablewidth{
- 
+
   width:20vw;}
 
   .tablewidthHeading{
@@ -1023,3 +1031,9 @@ color:green; font-size:75px;}
 .wrongImage{
 color:red; font-size:75px;}
 
+.div_text_shadow
+{
+color: rgb(255, 255, 255);
+font-size: 50px;
+text-shadow: rgb(71, 71, 71) 3px 5px 2px;
+}

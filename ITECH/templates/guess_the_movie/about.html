@@ -3,17 +3,23 @@
 {% load staticfiles %}
 
 {% block title %}<title>About</title>{% endblock %}
-{% block body %}<body>{% endblock %}
+{% block body %}<body id="page-top" class="backgroundRules">{% endblock %}
 {% block uppper %}
 <header>
-     <div id="carousel-example-generic" class="carousel slide">
+      <div class="carousel-caption tableLeaderboard">
+        <div id="container" class="  text-center">
 
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-                <div class="item active">
-                    <img class="img-responsive img-full" src="/static/img/movie.jpg" alt="">
-                    <div class="carousel-caption">
 
+
+                    <div class="carousel-caption offset-top">
+                         <h2 class="biggerText div_text_shadow">How to Play</h2>
+                        <p>You will have 10 questions. Each question</p>
+                        <p>will have 4 possible answers you can pick from</p>
+                        <p>Play often and go on top of the leaderboards</p>
+                        <h2 class="biggerText div_text_shadow">Disclaimer </h2>
+
+                            <p>This is part of the coursework of the ITECH </p>
+                          <p> course taught in University of Glasgow</p>
                     </div>
                 </div>
             </div>
@@ -21,7 +27,7 @@
             <!-- Controls -->
 
 
-        </div>
+
     </header>
 {% endblock %}
 
