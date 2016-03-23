@@ -58,7 +58,6 @@
         <span class="icon-next"></span>
     </a>
 </div>
-</div>
 <section class="bg-primary" id="about">
     <div class="container">
         <div class="row margin-bottom">
@@ -73,8 +72,8 @@
                             <table class="table tabletop5" id="table">
                                 <thead >
                                 <tr>
-                                    <th background-color="white">Name</th>
-                                    <th background-color="white">Score</th>
+                                    <th>Name</th>
+                                    <th >Score</th>
 
                                 </tr>
                                 </thead>
@@ -82,8 +81,8 @@
 
                                 {% for user in top5Users %}
                                 <tr>
-                                    <td style="color:darkorange" class="addborders">{{ user.user.username }}</td>
-                                    <td style="color:darkorange" class="addborders">{{ user.total_points }}</td>
+                                    <td  class="addborders">{{ user.user.username }}</td>
+                                    <td class="addborders">{{ user.total_points }}</td>
                                 </tr>
                                 {% endfor %}
 

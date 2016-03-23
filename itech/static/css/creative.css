@@ -739,11 +739,11 @@ border-all: 1px solid white;
 border: 1px solid white;
 }
 .tabletop5 th{
-    text-color: white;
+    color: white;
 }
 
 .tabletop5 td{
-    text-color: darkorange;
+    color: darkorange;
 }
 .main-box{
 
