@@ -50,7 +50,11 @@
       var counter = 1;
       $("#{{answer.id}}").click(function(event) {
         var element = $(this);
-        if ("{{question.movie.title}}" === $(this).attr("value")) {
+        var movie = "{{question.movie.title}}";
+        movie= movie.replace('&#39;','\'');
+        movie = movie.replace('&amp;','&');
+        movie = movie.replace('·','');
+        if (movie === $(this).attr("value")) {
           element.removeClass("btn");
           element.removeClass("btnPlay");
           element.addClass("CorrectGuess");
