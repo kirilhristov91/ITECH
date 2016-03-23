@@ -632,7 +632,9 @@ body {
     background-image: url("/static/img/backgorund-blurry.jpg");
 
 }
-
+.backLogin{
+    background-image :url("/static/img/blurry5.jpg")
+}
 
 .backgroundRules{
 

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -51,6 +50,8 @@
       var counter = 1;
       $("#{{answer.id}}").click(function(event) {
         var element = $(this);
+
+
         var movie = "{{question.movie.title}}";
         movie= movie.replace('&#39;','\'');
         movie = movie.replace('&amp;','&');

@@ -15,10 +15,10 @@
             <h1 class="text-left login-title2 text-center">Profile</h1>
             <div class="col-sm-4 text-center">
                 {% if userp.picture %}
-                <img src="{{userp.picture.url}}" class="img-responsive profileImage"/>
+                <img src="{{userp.picture.url}}"  alt="" class="img-responsive profileImage"/>
                 <a href="/guess_the_movie/profile/upload_picture ">Change picture</a><br/><br/>
                 {% else %}
-                 <img src="/static/img/avatar.jpg" class="img-responsive profileImage"/>
+                 <img src="/static/img/avatar.jpg" alt="" class="img-responsive profileImage"/>
                 <a href="/guess_the_movie/profile/upload_picture">Add a picture</a><br/><br/>
                 {% endif %}
                 Username: {{user.username}}<br/>
@@ -33,7 +33,7 @@
                      <table class="table table-bordered"   >
                     <thead>
                     <tr>
-                        <th colspan="2">Favourites</th>
+                        <th >Favourites</th>
                     </tr>
                     </thead>
                     <tbody style="overflow-y:scroll; position:absolute; height: 250px;">
